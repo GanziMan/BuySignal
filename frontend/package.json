@@ -4,6 +4,7 @@
   "description": "shop infinity",
   "main": "index.js",
   "scripts": {
+    "start": "live-server src --verbose",
     "test": "npm start"
   },
   "repository": {
