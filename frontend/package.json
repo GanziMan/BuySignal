@@ -1,0 +1,27 @@
+{
+  "name": "shopfinity",
+  "version": "1.0.0",
+  "description": "shop infinity",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GanziMan/E-Commerce-Web.git"
+  },
+  "keywords": [
+    "web",
+    "e-commerce",
+    "shop"
+  ],
+  "author": "GanziMan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GanziMan/E-Commerce-Web/issues"
+  },
+  "homepage": "https://github.com/GanziMan/E-Commerce-Web#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
