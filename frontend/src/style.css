@@ -3,6 +3,9 @@ body {
   margin: 0;
   padding: 0;
   max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+
   width: 100%;
   height: 100vh;
 }
@@ -82,6 +85,36 @@ header {
       color: white;
       border: none;
       border-radius: 4px;
+    }
+  }
+}
+
+.products-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  .products-section-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .products-section-items {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(4, auto);
+    .item {
+      width: 255px;
+      height: 230px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 뿌연 그림자 */
+      .item-bottom {
+        height: 76px;
+      }
+      .item-top {
+        height: 154px;
+        background-color: #f7f8fa;
+      }
     }
   }
 }
