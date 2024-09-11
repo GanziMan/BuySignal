@@ -95,6 +95,8 @@ header {
   justify-content: center;
   align-items: center;
   gap: 60px;
+  padding-top: 50px;
+  padding-bottom: 125px;
   .products-section-text {
     display: flex;
     flex-direction: column;
@@ -110,6 +112,7 @@ header {
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 뿌연 그림자 */
       .item-bottom {
         height: 76px;
+        padding: 10px 25px;
       }
       .item-top {
         height: 154px;
