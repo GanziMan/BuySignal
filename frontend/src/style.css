@@ -121,3 +121,18 @@ header {
     }
   }
 }
+
+.description-section {
+  background-color: #f7f8fa;
+  .description-top-text {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .description-bottom-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
