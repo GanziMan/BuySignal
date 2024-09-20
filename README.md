@@ -40,7 +40,8 @@ $ npm start
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white)
-![RADIX UI](https://img.shields.io/badge/RADIX-UI-316192?logo=radixui&logoColor=white)
+![RADIX UI](https://img.shields.io/badge/Radix-000000?style=for-the-badge&logo=radixui&logoColor=white)
+![TailWind CSS](https://img.shields.io/badge/Tailwind_CSS-grey?style=for-the-badge&logo=tailwind-css&logoColor=38B2AC)
 
 ## Back-End
 
