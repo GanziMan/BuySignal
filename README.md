@@ -38,7 +38,7 @@ $ npm start
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white)
-![Material UI](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=MUI&logoColor=white)
+![RADIX UI](https://img.shields.io/badge/RADIX-UI-316192?logo=radixui&logoColor=white)
 
 ## Back-End
 
