@@ -4,7 +4,7 @@ import SearchComponent from "@/components/SearchComponent";
 
 export default function MainForm() {
   return (
-    <div className="max-w-[600px] w-full text-black">
+    <div className="w-full flex justify-center text-black">
       <SearchComponent />
     </div>
   );
