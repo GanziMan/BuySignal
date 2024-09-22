@@ -5,16 +5,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/  # PostgreSQL 데이터 영구 저장
     environment:
-      POSTGRES_DB: ecommerce_db  # DB 이름
-      POSTGRES_USER: ecommerce_user  # 사용자 이름
-      POSTGRES_PASSWORD: mysecretpassword  # 사용자 비밀번호
+      POSTGRES_DB: buysignal_db  # DB 이름
+      POSTGRES_USER: buysignal_user  # 사용자 이름
+      POSTGRES_PASSWORD: ecom123!@#  # 사용자 비밀번호
+      POSTGRES_HOST_AUTH_METHOD: "trust"
 
   web:
     build: .
     volumes:
-      - 경로~~~~~server/main_api_server:/app  # 로컬 경로를 컨테이너의 /app으로 마운트
+      - C:/Users/swag0/Desktop/E-Commerce-Web/server/main_api_server:/app  # 로컬 경로를 컨테이너의 /app으로 마운트
     ports:
-      - "80:8000"  # 호스트 80번 포트를 컨테이너의 8000번 포트에 매핑
+      - "8000:8000"  # 호스트 80번 포트를 컨테이너의 8000번 포트에 매핑
     depends_on:
       - db  # web 서비스는 db 서비스가 구동된 후 시작됨
     environment:
@@ -25,8 +26,17 @@ services:
       - DB_USER=buysignal_user
       - DB_PASSWORD=ecom123!@#
     command: >
-      sh -c "python manage.py migrate && gunicorn main_api_server.wsgi:application --bind 0.0.0.0:8000"
+      sh -c "python manage.py migrate && gunicorn main_api_server.wsgi:application --bind 0.0.0.0:8000 --log-level info"
       # 컨테이너가 시작될 때 마이그레이션을 실행하고, gunicorn을 통해 Django 서버 구동
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:8000"  # 호스트 80번 포트를 nginx의 80번 포트에 매핑
+    depends_on:
+      - web
 
 volumes:
   postgres_data:  # PostgreSQL 데이터 볼륨 (영구 저장소)

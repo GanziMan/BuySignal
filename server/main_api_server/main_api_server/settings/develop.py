@@ -7,7 +7,7 @@ DATABASES = {
         'NAME': 'buysignal_db',       # 로컬 개발용 DB 이름
         'USER': 'buysignal_user',      # 로컬 개발용 사용자
         'PASSWORD': 'ecom123!@#',      # 로컬 개발용 비밀번호
-        'HOST': 'localhost',           # 로컬에서 실행 중
+        'HOST': 'db',           # 로컬에서 실행 중
         'PORT': '5432',                # 기본 PostgreSQL 포트
     }
 }
