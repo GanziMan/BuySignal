@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -74,16 +75,16 @@ WSGI_APPLICATION = 'main_api_server.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecommerce-base',       # 생성한 데이터베이스 이름
-        'USER': 'postgres',        # PostgreSQL 사용자 이름
-        'PASSWORD': 'ecom123!@#',# PostgreSQL 사용자 비밀번호
-        'HOST': 'localhost',       # 로컬에서 실행 중일 경우
-        'PORT': '5432',            # 기본 PostgreSQL 포트
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',  # PostgreSQL 사용
+#         'NAME': os.getenv('DB_NAME', 'default_db'),  # 기본 데이터베이스 이름 (환경 변수로 설정 가능)
+#         'USER': os.getenv('DB_USER', 'default_user'),  # 기본 사용자
+#         'PASSWORD': os.getenv('DB_PASSWORD', 'default_password'),  # 기본 비밀번호
+#         'HOST': os.getenv('DB_HOST', 'localhost'),  # 기본 호스트
+#         'PORT': os.getenv('DB_PORT', '5432'),  # 기본 포트
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
