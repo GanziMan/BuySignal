@@ -13,7 +13,7 @@ services:
   web:
     build: .
     volumes:
-      - /srv/projects/Buysignal/server/main_api_server:/app  # 로컬 경로를 컨테이너의 /app으로 마운트
+      - /srv/projects/BuySignal/server/main_api_server:/app  # 로컬 경로를 컨테이너의 /app으로 마운트
     ports:
       - "8000:8000"  # 호스트 80번 포트를 컨테이너의 8000번 포트에 매핑
     depends_on:
