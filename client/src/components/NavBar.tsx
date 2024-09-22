@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function NavBar() {
   return (
-    <nav className="w-full fixed bottom-0 rounded-t-2xl h-[92px] shadow-2xl flex justify-between px-[30px] py-4 items-center z-[1000px]">
+    <nav className="bg-black max-w-[600px] w-full fixed bottom-0 rounded-t-2xl h-[92px] shadow-2xl flex justify-between px-[30px] py-4 items-center z-[1000px]">
       <div className="flex flex-col gap-[3px] w-[29px] h-[42px] justify-between items-center">
         <Image
           src={"/images/icons/ic-shop.svg"}
