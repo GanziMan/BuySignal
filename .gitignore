@@ -6,3 +6,4 @@ server/main_api_server/main_api_server/__pycache__/settings.cpython-310.pyc
 *.pyc
 *.pyc
 server/main_api_server/main_api_server/__pycache__/settings.cpython-310.pyc
+server/local-docker-compose.yml
