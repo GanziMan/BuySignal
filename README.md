@@ -20,6 +20,7 @@
 ```bash
 $ cd client
 $ npm install
+$ npm run dev
 ```
 
 ## 2️⃣ Running the app
@@ -45,8 +46,8 @@ $ npm start
 
 ## Back-End
 
-![Python](https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white)
 ![DJango](https://img.shields.io/badge/django--rest--framework-3.12.4-blue?style=for-the-badge&labelColor=333333&logo=django&logoColor=white&color=blue)
 
 ## Database
