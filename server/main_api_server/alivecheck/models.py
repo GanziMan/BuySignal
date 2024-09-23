@@ -1,7 +1,7 @@
 from django.db import models
 
 class CheckTable(models.Model):
-    code = models.IntegerField(primary_key=True)  # PK로 사용할 code 필드
+    code = models.IntegerField(primary_key=True, default=1)  # PK로 사용할 code 필드
     state = models.CharField(max_length=10)      # state 필드, 최대 길이 10
 
     def __str__(self):

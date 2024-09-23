@@ -25,8 +25,16 @@ services:
       - DB_NAME=buysignal_db
       - DB_USER=buysignal_user
       - DB_PASSWORD=ecom123!@#
+      # 슈퍼유저를 위한 환경 변수 추가
+      - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
+      - DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
+      - DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
     command: >
-      sh -c "python manage.py migrate && gunicorn main_api_server.wsgi:application --bind 0.0.0.0:8000 --log-level info"
+      sh -c "/app/wait-for-it.sh db 5432 --
+             python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py shell < /app/create_superusers.py &&
+             gunicorn main_api_server.wsgi:application --bind 0.0.0.0:8000 --log-level info"
       # 컨테이너가 시작될 때 마이그레이션을 실행하고, gunicorn을 통해 Django 서버 구동
 
   nginx:
