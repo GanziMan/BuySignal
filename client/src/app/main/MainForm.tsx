@@ -18,13 +18,13 @@ interface ProductDataType {
 const PROUDCT_DATA: ProductDataType[] = [
   {
     name: "나이키 에어포스1",
-    description: "1켤레당, 가격",
+    description: "한켤레당, 가격",
     price: "110,000원",
     productUrl: "/images/product/img-shoes.png",
   },
   {
-    name: "나이키 에어라인",
-    description: "1켤레당, 가격",
+    name: "나이키 에어머시기",
+    description: "한켤레당, 가격",
     price: "140,000원",
     productUrl: "/images/product/img-shoes2.png",
   },
