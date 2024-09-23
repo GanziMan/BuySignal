@@ -1,12 +1,5 @@
 "use client";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionHeader,
-  AccordionItem,
-  AccordionTrigger,
-} from "@radix-ui/react-accordion";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { Share2Icon } from "@radix-ui/react-icons";
 import { PlusIcon } from "@radix-ui/react-icons";
@@ -65,19 +58,6 @@ export default function ProductForm() {
       </div>
 
       <Separator className="w-full bg-[#E2E2E2] h-[1px] max-w-[363px]" />
-      <Accordion defaultValue={"1"} collapsible type="single">
-        <AccordionItem value="1">
-          <AccordionTrigger>상품 설명</AccordionTrigger>
-          <AccordionContent>테스트 내용</AccordionContent>
-        </AccordionItem>
-      </Accordion>
-
-      <Accordion defaultValue={"2"} collapsible type="single">
-        <AccordionItem value="2">
-          <AccordionTrigger>리뷰</AccordionTrigger>
-          <AccordionContent>테스트 내용</AccordionContent>
-        </AccordionItem>
-      </Accordion>
     </div>
   );
 }
