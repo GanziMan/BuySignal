@@ -26,7 +26,7 @@ const PROUDCT_DATA: ProductDataType[] = [
     name: "나이키 에어머시기",
     description: "한켤레당, 가격",
     price: "140,000원",
-    productUrl: "/images/product/img-shoes2.png",
+    productUrl: "/images/product/img-shoes.png",
   },
 ];
 export default function MainForm() {
