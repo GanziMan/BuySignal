@@ -27,10 +27,10 @@ export default function ThisWeekProduct({
           return (
             <div
               onClick={() => router.push(`/main/${index}`)}
-              className="w-[173px] h-[308px] border rounded-2xl py-5 px-[18px] flex flex-col justify-between items-center"
+              className="w-[173px] h-[308px] border rounded-2xl py-9 px-[18px] flex flex-col justify-between items-center"
             >
               <Image
-                width={100}
+                width={200}
                 height={62}
                 src={item.productUrl}
                 alt="제품 이미지"
