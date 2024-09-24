@@ -18,16 +18,16 @@ export default function ThisWeekProduct({
 
   return (
     <>
-      <div className="flex justify-between items-center  w-[364px]">
+      <div className="flex justify-between items-center  w-full">
         <p className=" font-semibold text-2xl">{title}</p>
         <p className="text-[#53B175] text-sm font-semibold">전체 상품 보기</p>
       </div>
-      <div className="w-[364px] flex justify-between">
+      <div className="w-full flex justify-between">
         {productData.map((item, index: number) => {
           return (
             <div
               onClick={() => router.push(`/main/${index}`)}
-              className="w-[173px] h-[308px] border rounded-2xl py-9 px-[18px] flex flex-col justify-between items-center"
+              className="w-[173px] h-[238px] border rounded-2xl px-[18px] flex flex-col  items-center"
             >
               <Image
                 width={200}
@@ -36,18 +36,18 @@ export default function ThisWeekProduct({
                 alt="제품 이미지"
                 objectFit="contain"
               />
-              <div className="flex flex-col gap-[5px]">
+              <div className="flex flex-col gap-[5px] w-full">
                 <p className="font-semibold">{item.name}</p>
                 <p className="text-sm text-[#7C7C7C]">{item.description}</p>
               </div>
               <div className="flex justify-between items-center w-full">
                 <p className="font-semibold text-lg ">{item.price}</p>
-                <div className="w-8 h-8 rounded-2xl flex items-center justify-center bg-[#696969]">
+                <div className="w-6 h-6 rounded-2xl flex items-center justify-center bg-[#696969]">
                   <Image
                     src={"/images/icons/ic-plus.svg"}
                     alt="플러스 아이콘"
-                    width={17}
-                    height={17}
+                    width={15}
+                    height={15}
                     color="white"
                   />
                 </div>
