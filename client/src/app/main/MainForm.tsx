@@ -31,7 +31,7 @@ const PROUDCT_DATA: ProductDataType[] = [
 ];
 export default function MainForm() {
   return (
-    <div className="w-full flex flex-col items-center gap-5 text-black p-[100px]">
+    <div className="w-full h-full flex-auto flex flex-col items-center gap-5 text-black p-5">
       <Image
         src={"/images/logo-buysignal.png"}
         alt="로고 이미지"
