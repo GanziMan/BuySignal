@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Theme as RadixTheme } from "@radix-ui/themes";
+import { RootToaster } from "@/Provider/RootToaster";
 
 export const metadata: Metadata = {
   title: "구매각",
@@ -15,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="">
-        <RadixTheme>{children}</RadixTheme>
+        <RadixTheme>
+          <RootToaster />
+          {children}
+        </RadixTheme>
       </body>
     </html>
   );
