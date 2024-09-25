@@ -1,26 +1,40 @@
 "use client";
 
 import SearchComponent from "@/components/SearchComponent";
-import Image from "next/image";
 
+const mockExploreData = [
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+];
 export default function ExploreForm() {
   return (
-    <section>
-      <div className="flex flex-col gap-[30px]">
+    <div className="w-full h-full flex flex-col gap-5 py-2">
+      <div className="flex flex-col gap-[30px] items-center">
         <div>검색</div>
         <SearchComponent />
       </div>
 
       <div className="grid grid-cols-2 gap-[15px] w-full max-w-[364px]">
-        <div className="flex flex-col gap-7 justify-center items-center w-[174px] h-[189px]">
-          <Image src={""} alt="" width={111} height={75} />
-          <p className="text-base font-bold">나이키 에어포스1</p>
-        </div>
-        <div className="flex flex-col gap-7 justify-center items-center w-[174px] h-[189px]">
-          <Image src={""} alt="" width={111} height={75} />
-          <p className="text-base font-bold">나이키 에어포스1</p>
-        </div>
+        {mockExploreData.map((item) => {
+          return (
+            <div className="flex flex-col gap-7 justify-center items-center max-w-[174px] w-full h-[189px] border border-zinc-300 rounded-xl">
+              <p className="text-base font-bold">나이키 에어포스1</p>
+            </div>
+          );
+        })}
       </div>
-    </section>
+    </div>
   );
 }
