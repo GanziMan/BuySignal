@@ -37,7 +37,12 @@ export default function ExploreSearchForm() {
     <>
       <section className="h-full w-full flex flex-col gap-6 py-2">
         <div className="flex justify-between">
-          <ArrowLeftIcon width={25} height={25} className="font-black" />
+          <ArrowLeftIcon
+            width={25}
+            height={25}
+            className="font-black"
+            onClick={() => router.back()}
+          />
           <Header label="검색어" />
           <MixerHorizontalIcon
             width={25}
@@ -50,7 +55,7 @@ export default function ExploreSearchForm() {
           {mockExploreSearchData.map((item) => {
             return (
               <div
-                onClick={() => router.push(`/explore/`)}
+                onClick={() => router.push(`/main/1`)}
                 className="max-w-[173px] w-full h-[248px] border rounded-2xl px-[18px] py-5 flex flex-col  items-center"
               >
                 <div className="flex flex-col gap-[5px] w-full">

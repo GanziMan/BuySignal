@@ -42,7 +42,6 @@ export default function MainForm() {
       <CarouselProuduct />
       <ThisWeekProduct title="이번 주 상품" productData={PROUDCT_DATA} />
       <ThisWeekProduct title="베스트 셀러 상품" productData={PROUDCT_DATA} />
-      <NavBar />
     </div>
   );
 }

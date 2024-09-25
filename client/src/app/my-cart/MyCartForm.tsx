@@ -25,7 +25,7 @@ const mockCartData = [
 export default function MyCartForm() {
   return (
     <section className="h-full w-full flex flex-col gap-6 py-2 items-center">
-      <Header label="검색어" />
+      <Header label="장바구니" />
 
       <div className="flex flex-col gap-7">
         {mockCartData.map((item) => {

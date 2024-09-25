@@ -1,5 +1,6 @@
 import PageContainer from "@/components/PageContainer";
 import ExploreSearchForm from "./ExploreSearchForm";
+import NavBar from "@/components/NavBar";
 
 export async function generateMeta() {
   return {
@@ -8,5 +9,9 @@ export async function generateMeta() {
 }
 
 export default async function ExploreSearchPage() {
-  return <PageContainer children={<ExploreSearchForm />} />;
+  return (
+    <>
+      <PageContainer children={<ExploreSearchForm />} /> <NavBar />
+    </>
+  );
 }

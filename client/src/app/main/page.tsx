@@ -1,6 +1,18 @@
 import PageContainer from "@/components/PageContainer";
 import MainForm from "./MainForm";
+import NavBar from "@/components/NavBar";
 
 export default function MainPage() {
-  return <PageContainer children={<MainForm />} />;
+  return (
+    <>
+      <PageContainer
+        children={
+          <>
+            <MainForm />
+          </>
+        }
+      />
+      <NavBar />
+    </>
+  );
 }
