@@ -22,18 +22,15 @@ export default function CarouselProuduct() {
     <div className="w-full flex justify-center">
       <Carousel
         swipeable={true}
-        // draggable={true}
+        arrows={false}
         showDots={true}
         responsive={responsive}
-        ssr={true} // means to render carousel on server-side.
+        ssr={true}
         infinite={true}
         autoPlay={true}
         autoPlaySpeed={1000}
-        // keyBoardControl={true}
-        // customTransition="all .5"
         transitionDuration={500}
         containerClass="carousel-container"
-        // removeArrowOnDeviceType={["tablet", "mobile"]}
         deviceType={"mobile"}
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
