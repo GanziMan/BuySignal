@@ -83,28 +83,32 @@ export default function ExploreSearchForm() {
         open={drawerOpen}
         onClose={drawClose}
         children={
-          <div className="flex flex-col gap-10">
-            <div className="px-6 py-[30px] w-full h-full bg-white">
-              <div className="flex flex-col gap-7">
-                <p className="text-2xl font-semibold">카테고리</p>
-                <div className="flex flex-col gap-5">
-                  <CheckBox label="옷" />
-                  <CheckBox label="신발" />
+          <>
+            <div className="flex flex-col gap-10">
+              <div className="px-6 py-[30px] w-full h-full bg-white">
+                <div className="flex flex-col gap-7">
+                  <p className="text-2xl font-semibold">카테고리</p>
+                  <div className="flex flex-col gap-5">
+                    <CheckBox label="옷" />
+                    <CheckBox label="신발" />
+                  </div>
+                </div>
+              </div>
+              <div className="px-6 py-[30px] w-full h-full bg-white">
+                <div className="flex flex-col gap-7">
+                  <p className="text-2xl font-semibold">브랜드</p>
+                  <div className="flex flex-col gap-5">
+                    <CheckBox label="나이키" />
+                    <CheckBox label="뉴발란스" />
+                    <CheckBox label="무신사" />
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="px-6 py-[30px] w-full h-full bg-white">
-              <div className="flex flex-col gap-7">
-                <p className="text-2xl font-semibold">브랜드</p>
-                <div className="flex flex-col gap-5">
-                  <CheckBox label="나이키" />
-                  <CheckBox label="뉴발란스" />
-                  <CheckBox label="무신사" />
-                  <CheckBox label="이화서" />
-                </div>
-              </div>
-            </div>
-          </div>
+            <nav className="bg-[#489E67] text-white max-w-[344px] w-full h-[57px] bottom-[117px] fixed left-1/2 transform -translate-x-1/2 rounded-2xl flex justify-center items-center z-[1000px]">
+              <p className="text-lg font-semibold">적용하기</p>
+            </nav>
+          </>
         }
       />
     </>
