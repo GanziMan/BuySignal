@@ -18,7 +18,7 @@ export default function ThisWeekProduct({
 
   return (
     <>
-      <div className="flex justify-between items-center  w-full">
+      <div className="flex justify-between items-end  w-full ">
         <p className=" font-semibold text-2xl">{title}</p>
         <p className="text-[#53B175] text-sm font-semibold">전체 상품 보기</p>
       </div>
