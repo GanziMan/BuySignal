@@ -4,7 +4,7 @@ export default async function handler(req: NextRequest) {
   const { pathname, origin } = req.nextUrl;
 
   if (pathname === "/") {
-    return NextResponse.redirect(`${origin + "/main"}`);
+    return NextResponse.redirect(`${origin + "/introduce"}`);
   }
 
   return NextResponse.next();
