@@ -8,5 +8,5 @@ export async function generateMeta() {
 }
 
 export default async function ExploreSearchPage() {
-  return <PageContainer children={<ExploreSearchForm></ExploreSearchForm>} />;
+  return <PageContainer children={<ExploreSearchForm />} />;
 }

@@ -2,6 +2,7 @@
 
 import BottomDrawer from "@/components/BottomDrawer";
 import CheckBox from "@/components/Checkbox";
+import Header from "@/components/Header";
 import { ArrowLeftIcon, MixerHorizontalIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -37,7 +38,7 @@ export default function ExploreSearchForm() {
       <section className="h-full w-full flex flex-col gap-6 py-2">
         <div className="flex justify-between">
           <ArrowLeftIcon width={25} height={25} className="font-black" />
-          <p className="text-xl font-bold">검색어</p>
+          <Header label="검색어" />
           <MixerHorizontalIcon
             width={25}
             height={25}

@@ -37,7 +37,7 @@ export default function MainForm() {
         alt="위치 이미지"
         width={162}
         height={22.69}
-      ></Image>
+      />
       <SearchComponent />
       <CarouselProuduct />
       <ThisWeekProduct title="이번 주 상품" productData={PROUDCT_DATA} />

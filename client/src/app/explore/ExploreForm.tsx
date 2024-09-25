@@ -1,5 +1,6 @@
 "use client";
 
+import Header from "@/components/Header";
 import SearchComponent from "@/components/SearchComponent";
 
 const mockExploreData = [
@@ -22,7 +23,7 @@ export default function ExploreForm() {
   return (
     <div className="w-full h-full flex flex-col gap-5 py-2">
       <div className="flex flex-col gap-[30px] items-center">
-        <div>검색</div>
+        <Header label="Search" />
         <SearchComponent />
       </div>
 
