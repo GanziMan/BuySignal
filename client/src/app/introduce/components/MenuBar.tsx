@@ -103,6 +103,7 @@ export default function MenuBar() {
 
 const framerListyle = {
   height: "50px",
+  cursor: "pointer",
   border: "1px solid black",
   borderRadius: "10px",
   display: "flex",
