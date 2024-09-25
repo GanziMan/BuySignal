@@ -27,18 +27,20 @@ export default function ThisWeekProduct({
           return (
             <div
               onClick={() => router.push(`/main/${index}`)}
-              className="w-[173px] h-[238px] border rounded-2xl px-[18px] flex flex-col  items-center"
+              className="w-[173px] h-[238px] border rounded-2xl px-[18px] flex flex-col  items-center gap-[15px]"
             >
-              <Image
-                width={200}
-                height={62}
-                src={item.productUrl}
-                alt="제품 이미지"
-                objectFit="contain"
-              />
-              <div className="flex flex-col gap-[5px] w-full">
-                <p className="font-semibold">{item.name}</p>
-                <p className="text-sm text-[#7C7C7C]">{item.description}</p>
+              <div className="flex flex-col">
+                <Image
+                  width={200}
+                  height={62}
+                  src={item.productUrl}
+                  alt="제품 이미지"
+                  objectFit="contain"
+                />
+                <div className="flex flex-col gap-[5px] w-full">
+                  <p className="font-semibold">{item.name}</p>
+                  <p className="text-sm text-[#7C7C7C]">{item.description}</p>
+                </div>
               </div>
               <div className="flex justify-between items-center w-full">
                 <p className="font-semibold text-lg ">{item.price}</p>
