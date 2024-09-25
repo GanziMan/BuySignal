@@ -31,7 +31,7 @@ const PROUDCT_DATA: ProductDataType[] = [
 ];
 export default function MainForm() {
   return (
-    <div className="w-full h-full flex-auto flex flex-col items-center gap-5 text-black p-5">
+    <div className="w-full h-full flex-auto flex flex-col items-center gap-5 text-black py-5">
       <Image
         src={"/images/location/img-location.png"}
         alt="위치 이미지"
