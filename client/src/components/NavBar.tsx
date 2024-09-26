@@ -29,7 +29,7 @@ export default function NavBar() {
           height={24}
           alt="explore 아이콘"
         />
-        <p className="text-xs font-semibold">Explore</p>
+        <p className="text-xs font-semibold">전체</p>
       </div>
       <div
         onClick={() => {
@@ -46,11 +46,7 @@ export default function NavBar() {
         <p className="text-xs font-semibold">장바구니</p>
       </div>
       <div
-        onClick={() => {
-          toast("준비중입니다.", {
-            icon: "🥹",
-          });
-        }}
+        onClick={() => router.push("/favorite")}
         className="flex flex-col gap-[3px] w-[40px] h-[42px] justify-between items-center cursor-pointer"
       >
         <Image
