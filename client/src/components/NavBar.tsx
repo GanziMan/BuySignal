@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 export default function NavBar() {
   const router = useRouter();
   return (
-    <nav className="bg-white max-w-[600px] w-full fixed bottom-0 rounded-t-2xl h-[92px] shadow-2xl flex justify-between px-[30px] py-4 items-center z-[1000px]">
+    <nav className="bg-white max-w-[600px] w-full fixed  left-1/2 transform -translate-x-1/2 bottom-0 rounded-t-2xl h-[92px] shadow-2xl flex justify-between px-[30px] py-4 items-center z-[1000px]">
       <div
         onClick={() => router.push("/main")}
         className="flex flex-col gap-[3px] w-[40px] h-[42px] justify-between items-center cursor-pointer"
