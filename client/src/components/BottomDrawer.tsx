@@ -11,15 +11,16 @@ interface PropsType {
   open: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  height: number;
 }
 
-const BottomDrawer = ({ open, onClose, children }: PropsType) => {
+const BottomDrawer = ({ open, onClose, children, height }: PropsType) => {
   return (
     <>
       <Global
         styles={css`
           .MuiPaper-root {
-            height: 95vh !important;
+            height: ${height}vh !important;
             border-top-left-radius: 32px;
             border-top-right-radius: 32px;
           }

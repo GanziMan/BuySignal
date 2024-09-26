@@ -1,1 +1,13 @@
-export default function FavoritePage() {}
+import PageContainer from "@/components/PageContainer";
+import FavoriteForm from "./FavoriteForm";
+import NavBar from "@/components/NavBar";
+
+export default async function FavoritePage() {
+  return (
+    <>
+      {" "}
+      <PageContainer children={<FavoriteForm />} />
+      <NavBar />
+    </>
+  );
+}
