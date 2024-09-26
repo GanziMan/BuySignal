@@ -82,6 +82,7 @@ export default function ExploreSearchForm() {
       <BottomDrawer
         open={drawerOpen}
         onClose={drawClose}
+        height={85}
         children={
           <>
             <div className="flex flex-col gap-10">
