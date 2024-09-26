@@ -40,7 +40,6 @@ export default function MyCartForm() {
     <>
       <section className="h-full w-full flex flex-col gap-6 py-2 items-center">
         <Header label="장바구니" />
-
         <div className="flex flex-col gap-7">
           {mockCartData.map((item) => {
             return (
@@ -86,7 +85,10 @@ export default function MyCartForm() {
             );
           })}
         </div>
-        <button className="bg-[#489E67] text-white max-w-[344px] w-full h-[57px] bottom-[117px] fixed  rounded-2xl flex justify-center items-center z-[1000px]">
+        <button
+          onClick={() => setDrawerOpen(true)}
+          className="bg-[#489E67] text-white max-w-[344px] w-full h-[57px] bottom-[117px] fixed  rounded-2xl flex justify-center items-center z-[1000px]"
+        >
           <p className="text-lg font-semibold">구매하기</p>
           <p className="text-xs">(총 금액)</p>
         </button>
@@ -99,7 +101,7 @@ export default function MyCartForm() {
           <div className="px-6 py-9">
             <div className="flex justify-between">
               <p className="text-2xl font-semibold">결제</p>
-              <Cross1Icon width={18} height={18} />
+              <Cross1Icon width={18} height={18} onClick={drawClose} />
             </div>
             {/* 수령방법 */}
             <div>
@@ -123,7 +125,7 @@ export default function MyCartForm() {
                 </p>
                 <div className="flex gap-[15px] items-center">
                   <Image
-                    src={"/images/payment/img-card.svg"}
+                    src={"/images/order/img-card.svg"}
                     alt="카드 이미지"
                     width={21}
                     height={16}
@@ -144,12 +146,25 @@ export default function MyCartForm() {
               </div>
             </div>
             <Separator className="w-full bg-[#E2E2E2] h-[0px] my-7" />
-            <button
-              onClick={() => router.push("/order/success")}
-              className="bg-[#489E67] text-white max-w-[344px] w-full h-[57px] rounded-2xl flex justify-center items-center"
-            >
-              <p className="text-lg font-semibold">결제하기</p>
-            </button>
+            <div className="w-full flex justify-center">
+              {/* <Dialog>
+                <Trigger asChild>
+                  <button className="bg-[#489E67] text-white max-w-[344px] w-full h-[57px] rounded-2xl flex justify-center items-center">
+                    <p className="text-lg font-semibold">결제실패</p>
+                  </button>
+                </Trigger>
+
+                <Portal>
+                  <Overlay></Overlay>
+                </Portal>
+              </Dialog> */}
+              <button
+                onClick={() => router.push("/order/success")}
+                className="bg-[#489E67] text-white max-w-[344px] w-full h-[57px] rounded-2xl flex justify-center items-center"
+              >
+                <p className="text-lg font-semibold">결제하기</p>
+              </button>
+            </div>
           </div>
         }
       />
