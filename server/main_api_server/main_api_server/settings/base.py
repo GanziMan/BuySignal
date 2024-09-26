@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'alivecheck',
     'users',
-    'orders',
+    'items',
+    'manage_order',
 ]
 
 MIDDLEWARE = [
