@@ -2,9 +2,28 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import SideBar from "./SideBar";
+import { useState } from "react";
 
 export default function NavBar() {
   const router = useRouter();
+
+  const [drawState, setDrawState] = useState(false);
+
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event &&
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        return;
+      }
+
+      setDrawState(open);
+    };
+
   return (
     <nav className="bg-white max-w-[600px] w-full fixed  left-1/2 transform -translate-x-1/2 bottom-0 rounded-t-2xl h-[92px] shadow-2xl flex justify-between px-[30px] py-4 items-center z-[1000px]">
       <div
@@ -58,11 +77,7 @@ export default function NavBar() {
         <p className="text-xs font-semibold">찜</p>
       </div>
       <div
-        onClick={() => {
-          toast("준비중입니다.", {
-            icon: "🥹",
-          });
-        }}
+        onClick={toggleDrawer(true)}
         className="flex flex-col gap-[3px] w-[40px] h-[42px] justify-between items-center cursor-pointer"
       >
         <Image
@@ -71,6 +86,7 @@ export default function NavBar() {
           height={20}
           alt="user 아이콘"
         />
+        <SideBar toggleDrawer={toggleDrawer} state={drawState} />
         <p className="text-xs font-semibold">내 정보</p>
       </div>
     </nav>
