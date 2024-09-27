@@ -1,31 +1,35 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-
-type ToggleDrawer = (
-  open: boolean
-) => (event: React.KeyboardEvent | React.MouseEvent) => void;
+import Image from "next/image";
+import { Drawer } from "@mui/material";
 
 export default function SideBar({
-  toggleDrawer,
   state,
+  onClose,
 }: {
-  toggleDrawer: ToggleDrawer;
   state: boolean;
+  onClose: () => void;
 }) {
   const list = () => (
-    <Box
-      sx={{ width: 250 }}
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
+    <Box className="w-full max-w-[600px]" role="presentation p-4">
+      <div className="flex gap-5 items-centers">
+        <Image
+          src={"/images/bumsu.png"}
+          alt=""
+          width={50}
+          height={50}
+          className="rounded-full"
+        />
+        <div>
+          <p className="font-bold">김범수님</p>
+          <p className="text-xs text-[#7C7C7C]">qjatn50089@gmail.com</p>
+        </div>
+      </div>
       <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text) => (
           <ListItem key={text} disablePadding>
@@ -36,28 +40,30 @@ export default function SideBar({
         ))}
       </List>
       <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <button
+        className="w-full h-67px flex
+       justify-center"
+      >
+        <div>
+          <p className="font-semibold text-lg text-[#53B175]">로그아웃</p>
+        </div>
+      </button>
     </Box>
   );
 
   return (
-    <div>
-      <SwipeableDrawer
+    <div className="w-full">
+      <Drawer
         anchor="right"
         open={state}
-        onClose={toggleDrawer(false)}
-        onOpen={toggleDrawer(true)}
+        sx={{
+          width: "100%",
+        }}
+        className="w-full"
+        onClose={onClose}
       >
         {list()}
-      </SwipeableDrawer>
+      </Drawer>
     </div>
   );
 }
