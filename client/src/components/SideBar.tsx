@@ -16,7 +16,7 @@ export default function SideBar({
   onClose: () => void;
 }) {
   const list = () => (
-    <Box className="w-full max-w-[600px]" role="presentation p-4">
+    <Box className="w-full max-w-[600px] p-4 relative" role="presentation">
       <div className="flex gap-5 items-centers">
         <Image
           src={"/images/bumsu.png"}
@@ -42,7 +42,7 @@ export default function SideBar({
       <Divider />
       <button
         className="w-full h-67px flex
-       justify-center"
+       justify-center absolute bottom-0"
       >
         <div>
           <p className="font-semibold text-lg text-[#53B175]">로그아웃</p>
