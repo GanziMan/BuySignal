@@ -16,7 +16,7 @@ export default function SideBar({
   onClose: () => void;
 }) {
   const list = () => (
-    <Box className="w-full max-w-[600px] p-4 relative" role="presentation">
+    <Box className="w-full max-w-[600px] p-4 relative">
       <div className="flex gap-5 items-centers">
         <Image
           src={"/images/bumsu.png"}
