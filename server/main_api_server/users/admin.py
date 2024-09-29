@@ -15,12 +15,12 @@ class BuyerAdmin(admin.ModelAdmin):
     list_filter = ('created_at', 'updated_at')
     readonly_fields = ('created_at', 'updated_at')
 
-# Cart Admin
-class CartAdmin(admin.ModelAdmin):
-    list_display = ('user', 'product', 'quantity', 'created_at', 'updated_at')
-    search_fields = ('user__username', 'product__name')
-    list_filter = ('created_at', 'updated_at')
-    readonly_fields = ('created_at', 'updated_at')
+# # Cart Admin
+# class CartAdmin(admin.ModelAdmin):
+#     list_display = ('user', 'product', 'quantity', 'created_at', 'updated_at')
+#     search_fields = ('user__username', 'product__name')
+#     list_filter = ('created_at', 'updated_at')
+#     readonly_fields = ('created_at', 'updated_at')
 
 # Like Admin
 class LikeAdmin(admin.ModelAdmin):
@@ -37,6 +37,6 @@ class CouponAdmin(admin.ModelAdmin):
 # Register the models in the admin site
 admin.site.register(Seller, SellerAdmin)
 admin.site.register(Buyer, BuyerAdmin)
-admin.site.register(Cart, CartAdmin)
+# admin.site.register(Cart, CartAdmin)
 admin.site.register(Like, LikeAdmin)
 admin.site.register(Coupon, CouponAdmin)
