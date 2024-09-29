@@ -136,7 +136,7 @@ USE_TZ = True
 
 # 정적 파일 설정
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # 또는 다른 적절한 경로
 
 # 미디어 파일 설정 (필요한 경우)
 MEDIA_URL = '/media/'

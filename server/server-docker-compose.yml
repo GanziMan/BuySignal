@@ -34,6 +34,7 @@ services:
              python manage.py makemigrations &&
              python manage.py migrate &&
              python manage.py shell < /app/create_superusers.py &&
+             python manage.py collectstatic --noinput &&
              gunicorn main_api_server.wsgi:application --bind 0.0.0.0:8000 --log-level info"
       # 컨테이너가 시작될 때 마이그레이션을 실행하고, gunicorn을 통해 Django 서버 구동
 
