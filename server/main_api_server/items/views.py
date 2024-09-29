@@ -29,7 +29,7 @@ class Item_product(View):
                 'updated_at': product.updated_at.isoformat(),  # Convert datetime to ISO format
             } for product in products]
 
-            return JsonResponse(products_data, safe=False, status=200)  # Set safe=False
+            return JsonResponse({'products':products_data}, safe=False, status=200)  # Set safe=False
 
         except Product.DoesNotExist:
             return JsonResponse({'error': 'Products not found.'}, status=404)
