@@ -35,7 +35,6 @@ export default function ThisWeekProduct({
                   height={62}
                   src={item.productUrl}
                   alt="제품 이미지"
-                  objectFit="contain"
                 />
                 <div className="flex flex-col gap-[5px] w-full">
                   <p className="font-semibold">{item.name}</p>
