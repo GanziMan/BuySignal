@@ -47,18 +47,18 @@ class Buyer(models.Model):
     def __str__(self):
         return self.username
 
-# Cart Model
-class Cart(models.Model):
-    user = models.ForeignKey(Buyer, on_delete=models.CASCADE)
-    product = models.ForeignKey('items.Product', on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-# Like Model
-class Like(models.Model):
-    user = models.ForeignKey(Buyer, on_delete=models.CASCADE)
-    product_id = models.ManyToManyField('items.Product')
+# # Cart Model
+# class Cart(models.Model):
+#     user = models.ForeignKey(Buyer, on_delete=models.CASCADE)
+#     product = models.ForeignKey('items.Product', on_delete=models.CASCADE)
+#     quantity = models.PositiveIntegerField()
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+#
+# # Like Model
+# class Like(models.Model):
+#     user = models.ForeignKey(Buyer, on_delete=models.CASCADE)
+#     product_id = models.ManyToManyField('items.Product')
 
 # Coupon Model
 class Coupon(models.Model):
