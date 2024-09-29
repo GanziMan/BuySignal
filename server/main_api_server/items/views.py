@@ -13,7 +13,7 @@ class Item_product(View):
     def get_products_info(self, request):
         try:
             # Fetch the Buyer based on username and password_hash
-            products = Product.objects.get()
+            products = Product.objects.all()
 
             # Prepare the response data
             products = [{
