@@ -20,7 +20,7 @@ export default function SignUpForm() {
             id="standard-basic"
             label="Password"
             variant="standard"
-            className="block  w-full"
+            className="block w-full"
             type="password"
             InputProps={{
               sx: { width: "100%" },
