@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Seller, Buyer, Cart, Like, Coupon
+from .models import Seller, Buyer, Coupon
 
 # Seller Admin
 class SellerAdmin(admin.ModelAdmin):
@@ -15,18 +15,18 @@ class BuyerAdmin(admin.ModelAdmin):
     list_filter = ('created_at', 'updated_at')
     readonly_fields = ('created_at', 'updated_at')
 
-# Cart Admin
-class CartAdmin(admin.ModelAdmin):
-    list_display = ('user', 'product', 'quantity', 'created_at', 'updated_at')
-    search_fields = ('user__username', 'product__name')
-    list_filter = ('created_at', 'updated_at')
-    readonly_fields = ('created_at', 'updated_at')
+# # Cart Admin
+# class CartAdmin(admin.ModelAdmin):
+#     list_display = ('user', 'product', 'quantity', 'created_at', 'updated_at')
+#     search_fields = ('user__username', 'product__name')
+#     list_filter = ('created_at', 'updated_at')
+#     readonly_fields = ('created_at', 'updated_at')
 
-# Like Admin
-class LikeAdmin(admin.ModelAdmin):
-    list_display = ('user',)
-    search_fields = ('user__username',)
-    filter_horizontal = ('product_id',)  # For many-to-many relationship display
+# # Like Admin
+# class LikeAdmin(admin.ModelAdmin):
+#     list_display = ('user',)
+#     search_fields = ('user__username',)
+#     filter_horizontal = ('product_id',)  # For many-to-many relationship display
 
 # Coupon Admin
 class CouponAdmin(admin.ModelAdmin):
@@ -37,6 +37,6 @@ class CouponAdmin(admin.ModelAdmin):
 # Register the models in the admin site
 admin.site.register(Seller, SellerAdmin)
 admin.site.register(Buyer, BuyerAdmin)
-admin.site.register(Cart, CartAdmin)
-admin.site.register(Like, LikeAdmin)
+# admin.site.register(Cart, CartAdmin)
+# admin.site.register(Like, LikeAdmin)
 admin.site.register(Coupon, CouponAdmin)

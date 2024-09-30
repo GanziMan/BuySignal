@@ -12,24 +12,24 @@ class Item_product(View):
 
     def get_products_info(self, request):
         try:
-            # Fetch the Buyer based on username and password_hash
-            products = Product.objects.get()
+            # Fetch all products
+            products = Product.objects.all()
 
             # Prepare the response data
-            products = [{
-            'user' : product.user,
-            'name' : product.name,
-            'price' : product.price,
-            'sale_price' : product.sale_price,
-            'sale_rate' : product.sale_rate,
-            'activate' : product.activate,
-            'stock' : product.stock,
-            'category' : product.category,
-            'created_at' : product.created_at,
-            'updated_at' : product.updated_at
+            products_data = [{
+                'user': product.user.username,  # Assuming you want the username of the user
+                'name': product.name,
+                'price': str(product.price),  # Ensure price is serialized correctly
+                'sale_price': str(product.sale_price),  # Ensure sale_price is serialized correctly
+                'sale_rate': str(product.sale_rate) if product.sale_rate is not None else None,  # Handle None case
+                'activate': product.activate,
+                'stock': product.stock,
+                'category': product.category.name if product.category else None,  # Get category name
+                'created_at': product.created_at.isoformat(),  # Convert datetime to ISO format
+                'updated_at': product.updated_at.isoformat(),  # Convert datetime to ISO format
             } for product in products]
 
-            return JsonResponse(products, status=200)
+            return JsonResponse({'products':products_data}, safe=False, status=200)  # Set safe=False
 
         except Product.DoesNotExist:
             return JsonResponse({'error': 'Products not found.'}, status=404)
