@@ -8,6 +8,15 @@ export default function NavBar() {
   const router = useRouter();
 
   const [drawState, setDrawState] = useState<boolean>(false);
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      console.log(open);
+      setDrawState(open);
+    };
+
+  // useEffect(() => {
+  //   setDrawState(false);
+  // }, [toggleDrawer]);
 
   return (
     <nav className="bg-white max-w-[600px] w-full fixed  left-1/2 transform -translate-x-1/2 bottom-0 rounded-t-2xl h-[92px] shadow-2xl flex justify-between px-[30px] py-4 items-center z-[1000px]">
@@ -71,7 +80,7 @@ export default function NavBar() {
           height={20}
           alt="user 아이콘"
         />
-        <SideBar state={drawState} onClose={() => setDrawState(false)} />
+        <SideBar state={drawState} toggleDrawer={toggleDrawer} />
         <p className="text-xs font-semibold">내 정보</p>
       </div>
     </nav>
