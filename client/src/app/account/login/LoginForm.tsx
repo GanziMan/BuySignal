@@ -2,8 +2,10 @@
 
 import { TextField } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
+  const router = useRouter();
   return (
     <div className="h-screen flex flex-col gap-[20px]">
       <Image
@@ -39,8 +41,11 @@ export default function LoginForm() {
           <button className="w-full h-[57px] text-lg bg-[#53B175] flex justify-center items-center text-white rounded-[19px]">
             로그인
           </button>
-          <p className="underline underline-offset-2 cursor-pointer text-xs">
-            계정을 잃어버리셨나요?
+          <p
+            className="underline underline-offset-2 cursor-pointer text-xs"
+            onClick={() => router.push("/account/signup")}
+          >
+            계정이 없으신가요?
           </p>
         </div>
       </div>

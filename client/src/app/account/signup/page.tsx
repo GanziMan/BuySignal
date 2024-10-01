@@ -1,6 +1,6 @@
 import PageContainer from "@/components/PageContainer";
-import LoginForm from "./LoginForm";
+import SignUpForm from "./SignUpForm";
 
 export default function SignUpPage() {
-  return <PageContainer children={<LoginForm></LoginForm>} />;
+  return <PageContainer children={<SignUpForm></SignUpForm>} />;
 }

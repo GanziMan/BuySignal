@@ -17,6 +17,15 @@ export default function SignUpForm() {
         <div className="flex flex-col gap-6">
           <TextField
             id="standard-basic"
+            label="UserName"
+            variant="standard"
+            className="block w-full"
+            InputProps={{
+              sx: { width: "100%" },
+            }}
+          />
+          <TextField
+            id="standard-basic"
             label="Email"
             variant="standard"
             className="block w-full"
@@ -35,14 +44,10 @@ export default function SignUpForm() {
             }}
           />
         </div>
-        <div className="flex flex-col justify-center items-center gap-7">
-          <button className="w-full h-[57px] text-lg bg-[#53B175] flex justify-center items-center text-white rounded-[19px]">
-            로그인
-          </button>
-          <p className="underline underline-offset-2 cursor-pointer text-xs">
-            계정을 잃어버리셨나요?
-          </p>
-        </div>
+
+        <button className="w-full h-[57px] text-lg bg-[#53B175] flex justify-center items-center text-white rounded-[19px]">
+          회원가입
+        </button>
       </div>
     </div>
   );
