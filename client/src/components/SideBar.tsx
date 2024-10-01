@@ -18,13 +18,11 @@ export default function SideBar({
     open: boolean
   ) => (event: React.KeyboardEvent | React.MouseEvent) => void;
 }) {
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
-
   React.useEffect(() => {}, [state]);
   const list = () => (
     <Box
       role="presentation"
-      className="w-full max-w-[600px] p-4 relative !h-screen "
+      className="w-full max-w-[600px] p-4 relative h-screen "
     >
       <div className="flex gap-5 items-center justify-center">
         <Image
