@@ -1,10 +1,10 @@
 "use client";
 
+import AccordionComponent from "@/components/AccordionComponent";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { Share2Icon } from "@radix-ui/react-icons";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { MinusIcon } from "@radix-ui/react-icons";
-import { HeartFilledIcon } from "@radix-ui/react-icons"; // 하트 누를때
 
 import { HeartIcon } from "@radix-ui/react-icons";
 import { Separator } from "@radix-ui/react-separator";
@@ -14,7 +14,7 @@ export default function ProductForm() {
   const router = useRouter();
 
   return (
-    <div className="w-full flex flex-col h-full items-center gap-[30px]">
+    <div className="w-full flex flex-col h-full gap-[30px]">
       {/* 사진 영역 */}
       <div className="w-full max-w-[413px] h-[371px] bg-[#F2F3F2] rounded-b-3xl flex-col gap-[27px] items-center flex">
         <div className="flex w-full justify-between px-5 py-6">
@@ -56,8 +56,17 @@ export default function ProductForm() {
           <p className="font-bold text-2xl">110,000</p>
         </div>
       </div>
-
       <Separator className="w-full bg-[#E2E2E2] h-[1px] max-w-[363px]" />
+
+      <div className="px-4">
+        <AccordionComponent
+          collapsible
+          itemValue="tset"
+          header="상품 설명"
+          content="상품 설명 내용"
+          defaultValue="222"
+        />
+      </div>
     </div>
   );
 }
