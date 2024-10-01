@@ -20,7 +20,9 @@ export default function ThisWeekProduct({
     <>
       <div className="flex justify-between items-end  w-full ">
         <p className=" font-semibold text-2xl">{title}</p>
-        <p className="text-[#53B175] text-sm font-semibold">전체 상품 보기</p>
+        <p className="text-[#53B175] text-sm font-semibold cursor-pointer">
+          전체 상품 보기
+        </p>
       </div>
       <div className="w-full flex justify-between">
         {productData.map((item, index: number) => {
