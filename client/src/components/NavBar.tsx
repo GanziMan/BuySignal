@@ -39,14 +39,8 @@ export default function NavBar() {
   const [drawState, setDrawState] = useState<boolean>(false);
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      console.log(open);
       setDrawState(open);
     };
-
-  console.log(pathName);
-  // useEffect(() => {
-  //   setDrawState(false);
-  // }, [toggleDrawer]);
 
   return (
     <>
