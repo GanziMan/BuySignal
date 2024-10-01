@@ -94,13 +94,17 @@ export default function MainForm() {
   return (
     <div className="w-full h-full flex-auto flex flex-col items-center gap-5 text-black py-5">
       <div className="flex gap-2 items-center justify-center">
-        <Image
-          src={"/images/icons/ic-gps.svg"}
-          alt="위치 이미지"
-          width={20}
-          height={20}
-        />
-        <p>{locationName}</p>
+        {locationName && (
+          <>
+            <Image
+              src={"/images/icons/ic-gps.svg"}
+              alt="위치 이미지"
+              width={20}
+              height={20}
+            />
+            <p>{locationName}</p>
+          </>
+        )}
       </div>
       <SearchComponent />
       <CarouselProuduct />
