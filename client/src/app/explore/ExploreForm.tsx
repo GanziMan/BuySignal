@@ -29,7 +29,7 @@ export default function ExploreForm() {
         <SearchComponent />
       </div>
 
-      <div className="grid grid-cols-2 gap-[15px] w-full max-w-[364px]">
+      <div className="grid grid-cols-2 gap-[15px] w-full h-full max-w-[364px]">
         {mockExploreData.map((item) => {
           return (
             <div

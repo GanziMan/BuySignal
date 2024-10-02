@@ -60,33 +60,33 @@ export default function MainForm() {
     }
   }, []);
 
+  console.log(location);
   useEffect(() => {
-    if (location) {
-      const fetchLocationName = async () => {
-        try {
-          const response = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.lat}&lon=${location.lon}`
-          );
-          const data = await response.json();
+    if (!location) return; // 위치가 없으면 리턴
 
-          if (data && data.display_name) {
-            const addressParts = data.display_name
-              .split(",")
-              .map((part: string) => part.trim());
-            console.log(addressParts);
-            const filteredAddress = addressParts.slice(0, 1).join(" "); // 앞의 세 요소만 추출
-            setLocationName(addressParts[5] + " " + filteredAddress);
-          } else {
-            setError("Error fetching location name");
-          }
-        } catch (err) {
-          setError("Error fetching location name: " + err);
+    const fetchLocationName = async () => {
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.lat}&lon=${location.lon}`
+        );
+        const data = await response.json();
+
+        if (data && data.display_name) {
+          const addressParts = data.display_name
+            .split(",")
+            .map((part: string) => part.trim());
+          const filteredAddress = addressParts.slice(0, 1).join(" ");
+          setLocationName(addressParts[5] + " " + filteredAddress);
+        } else {
+          setError("Error fetching location name");
         }
-      };
+      } catch (err) {
+        setError("Error fetching location name: " + err);
+      }
+    };
 
-      fetchLocationName();
-    }
-  }, [location]);
+    fetchLocationName();
+  }, [location]); // location이 설정된 후에만 실행
 
   if (error) {
     toast.error(error);

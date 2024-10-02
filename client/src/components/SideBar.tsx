@@ -64,22 +64,24 @@ export default function SideBar({
   );
 
   return (
-    <div className="w-full !h-screen">
-      <Drawer
-        anchor="right"
-        open={state}
-        sx={{
-          width: "100%",
-          height: "100vh",
-          "& .MuiDrawer-paper": {
-            height: "100vh !important",
-          },
-        }}
-        className="w-full !h-screen"
-        onClose={toggleDrawer(false)}
-      >
-        {list()}
-      </Drawer>
-    </div>
+    <>
+      <div className="">
+        <Drawer
+          anchor="right"
+          open={state}
+          sx={{
+            width: "100%",
+            height: "100vh",
+            "& .MuiDrawer-paper": {
+              height: "100vh !important",
+            },
+          }}
+          className=""
+          onClose={toggleDrawer(false)}
+        >
+          {list()}
+        </Drawer>
+      </div>
+    </>
   );
 }
