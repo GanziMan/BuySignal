@@ -28,6 +28,7 @@ export default function ThisWeekProduct({
         {productData.map((item, index: number) => {
           return (
             <div
+              key={index}
               onClick={() => router.push(`/main/${index}`)}
               className="w-[173px] h-[238px] border rounded-2xl px-[18px] flex flex-col  items-center gap-[15px]"
             >
