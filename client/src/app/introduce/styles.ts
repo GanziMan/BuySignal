@@ -4,7 +4,7 @@ export const CommonContainer = styled(Box)(() => {
   return {
     width: "100%",
     height: "100vh",
-    background: "#f1e0ce",
+    background: "#F1F5F9",
     display: "flex",
     justifyContent: "center",
   };

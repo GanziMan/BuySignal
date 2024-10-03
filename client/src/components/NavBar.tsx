@@ -1,79 +1,85 @@
 "use client";
+
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import SideBar from "./SideBar";
 import { useState } from "react";
-
+import { twMerge } from "tailwind-merge";
+const navBarData = [
+  {
+    url: "main",
+    iconUrl: "/ic-shop.svg",
+    alt: "shop 아이콘",
+    name: "메인",
+  },
+  {
+    url: "explore",
+    iconUrl: "/ic-explore.svg",
+    alt: "explore 아이콘",
+    name: "전체",
+  },
+  {
+    url: "my-cart",
+    iconUrl: "/ic-cart.svg",
+    alt: "cart 아이콘",
+    name: "장바구니",
+  },
+  {
+    url: "favorite",
+    iconUrl: "/ic-bookmark.svg",
+    alt: "bookmark 아이콘",
+    name: "찜",
+  },
+];
 export default function NavBar() {
   const router = useRouter();
 
+  const pathName = usePathname().substring(usePathname().lastIndexOf("/") + 1);
+
   const [drawState, setDrawState] = useState<boolean>(false);
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      setDrawState(open);
+    };
 
   return (
-    <nav className="bg-white max-w-[600px] w-full fixed  left-1/2 transform -translate-x-1/2 bottom-0 rounded-t-2xl h-[92px] shadow-2xl flex justify-between px-[30px] py-4 items-center z-[1000px]">
-      <div
-        onClick={() => router.push("/main")}
-        className="flex flex-col gap-[3px] w-[40px] h-[42px] justify-between items-center cursor-pointer"
-      >
-        <Image
-          src={"/images/icons/ic-shop.svg"}
-          width={20}
-          height={20}
-          alt="shop 아이콘"
-        />
-        <p className="text-xs font-semibold">메인</p>
-      </div>
-      <div
-        onClick={() => router.push("/explore")}
-        className="flex flex-col gap-[3px] w-[40px] h-[42px] justify-between items-center cursor-pointer"
-      >
-        <Image
-          src={"/images/icons/ic-explore.svg"}
-          width={22}
-          height={24}
-          alt="explore 아이콘"
-        />
-        <p className="text-xs font-semibold">전체</p>
-      </div>
-      <div
-        onClick={() => {
-          router.push("/my-cart");
-        }}
-        className="flex flex-col gap-[3px] w-[50px] h-[42px] justify-between items-center cursor-pointer"
-      >
-        <Image
-          src={"/images/icons/ic-cart.svg"}
-          width={20}
-          height={20}
-          alt="cart 아이콘"
-        />
-        <p className="text-xs font-semibold">장바구니</p>
-      </div>
-      <div
-        onClick={() => router.push("/favorite")}
-        className="flex flex-col gap-[3px] w-[40px] h-[42px] justify-between items-center cursor-pointer"
-      >
-        <Image
-          src={"/images/icons/ic-bookmark.svg"}
-          width={20}
-          height={20}
-          alt="bookmark 아이콘"
-        />
-        <p className="text-xs font-semibold">찜</p>
-      </div>
-      <div
-        onClick={() => setDrawState(true)}
-        className="flex flex-col gap-[3px] w-[40px] h-[42px] justify-between items-center cursor-pointer"
-      >
-        <Image
-          src={"/images/icons/ic-user.svg"}
-          width={20}
-          height={20}
-          alt="user 아이콘"
-        />
-        <SideBar state={drawState} onClose={() => setDrawState(false)} />
-        <p className="text-xs font-semibold">내 정보</p>
-      </div>
-    </nav>
+    <>
+      <nav className="bg-white max-w-[600px] w-full fixed  left-1/2 transform -translate-x-1/2 bottom-0 rounded-t-2xl h-[92px] shadow-2xl flex justify-between px-[30px] py-4 items-center z-[1000px]">
+        {navBarData.map((item) => {
+          return (
+            <div
+              onClick={() => router.push("/" + item.url)}
+              className={twMerge(
+                "flex flex-col w-[70px] h-[70px] rounded-full gap-2 justify-center items-center cursor-pointer",
+                item.url === pathName ? "bg-slate-100" : ""
+              )}
+            >
+              <Image
+                src={`/images/icons/${item.iconUrl}`}
+                width={20}
+                height={20}
+                alt={item.alt}
+              />
+              <p className="text-xs font-semibold">{item.name}</p>
+            </div>
+          );
+        })}
+
+        <div
+          onClick={() => setDrawState(true)}
+          className="flex flex-col  w-[70px] h-[70px] rounded-full gap-2 justify-center items-center cursor-pointer"
+        >
+          <Image
+            src={"/images/icons/ic-user.svg"}
+            width={20}
+            height={20}
+            alt="user 아이콘"
+          />
+
+          <p className="text-xs font-semibold">내 정보</p>
+        </div>
+      </nav>
+      <SideBar state={drawState} toggleDrawer={toggleDrawer} />
+    </>
   );
 }

@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
@@ -10,14 +11,20 @@ import { Drawer } from "@mui/material";
 
 export default function SideBar({
   state,
-  onClose,
+  toggleDrawer,
 }: {
   state: boolean;
-  onClose: () => void;
+  toggleDrawer: (
+    open: boolean
+  ) => (event: React.KeyboardEvent | React.MouseEvent) => void;
 }) {
+  React.useEffect(() => {}, [state]);
   const list = () => (
-    <Box className="w-full max-w-[600px] p-4 relative">
-      <div className="flex gap-5 items-centers">
+    <Box
+      role="presentation"
+      className="w-full max-w-[600px] p-4 relative h-screen "
+    >
+      <div className="flex gap-5 items-center justify-center">
         <Image
           src={"/images/bumsu.png"}
           alt=""
@@ -31,7 +38,7 @@ export default function SideBar({
         </div>
       </div>
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text) => (
+        {["주문내역"].map((text) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemText primary={text} />
@@ -40,30 +47,34 @@ export default function SideBar({
         ))}
       </List>
       <Divider />
-      <button
-        className="w-full h-67px flex
-       justify-center absolute bottom-0"
-      >
-        <div>
-          <p className="font-semibold text-lg text-[#53B175]">로그아웃</p>
-        </div>
+      <List>
+        {["설정", "정보변경"].map((text) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+
+      <button className="w-[157px] h-[37px] flex justify-center items-center absolute bottom-10 left-1/2 transform -translate-x-1/2 rounded-[19px] bg-[#F2F3F2] ">
+        <p className="font-semibold text-[#53B175]">로그아웃</p>
       </button>
     </Box>
   );
 
   return (
-    <div className="w-full">
-      <Drawer
-        anchor="right"
-        open={state}
-        sx={{
-          width: "100%",
-        }}
-        className="w-full"
-        onClose={onClose}
-      >
-        {list()}
-      </Drawer>
-    </div>
+    <>
+      <div className="">
+        <Drawer
+          anchor="right"
+          open={state}
+          className=""
+          onClose={toggleDrawer(false)}
+        >
+          {list()}
+        </Drawer>
+      </div>
+    </>
   );
 }
