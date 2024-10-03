@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'users',
     'items',
     'manage_order',
+    'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -135,7 +137,7 @@ USE_I18N = True
 USE_TZ = True
 
 # 정적 파일 설정
-STATIC_URL = '/static/'
+STATIC_URL = '/staticfiles/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # 미디어 파일 설정 (필요한 경우)

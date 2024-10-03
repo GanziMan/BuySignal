@@ -9,6 +9,8 @@ services:
       POSTGRES_USER: buysignal_user  # 사용자 이름
       POSTGRES_PASSWORD: ecom123!@#  # 사용자 비밀번호
       POSTGRES_HOST_AUTH_METHOD: "trust"
+    ports:
+      - "54320:5432"  # PostgreSQL의 5432 포트를 로컬 5432 포트에 바인딩
 
   web:
     build: .
