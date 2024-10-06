@@ -7,3 +7,5 @@ server/main_api_server/main_api_server/__pycache__/settings.cpython-310.pyc
 *.pyc
 server/main_api_server/main_api_server/__pycache__/settings.cpython-310.pyc
 server/local-docker-compose.yml
+client/package-lock.json
+/server/main_api_server/users/migrations/0001_initial.py

@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -20,13 +21,14 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('admin/', admin.site.urls),  # Django 기본 Admin URL
+
     path('alivecheck/', include('alivecheck.urls')),  # alivecheck 앱의 URL 연결
     path('users/', include('users.urls')),
-    path('items/', include('items.urls')),
-    # path('manage_order/', include('manage_order.urls')),
 ]
 
 if settings.DEBUG:

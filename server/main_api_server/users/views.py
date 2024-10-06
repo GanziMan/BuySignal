@@ -1,125 +1,64 @@
 from django.http import JsonResponse
-from django.views import View
 from .models import *
+from rest_framework.response import Response
+from rest_framework import status
+from django.shortcuts import get_object_or_404
 
-class User_seller_info(View):
+from rest_framework_simplejwt.tokens import RefreshToken
+from .serializers import CustomTokenObtainPairSerializer
+
+from rest_framework.views import APIView
+from .serializers import UserSerializer
+
+class Signup(APIView):
     def get(self, request, *args, **kwargs):
-        '''
-        :param request: http get
-            - username (str): The username of the Seller.
-            - password_hash (str): The password hash of the Seller.
-
-        :return: JsonResponse
-        '''
-        return self.get_seller_info(request)
-
-    def put(self, request, *args, **kwargs):
-        return self.put_seller_info(request)
+        return Response([], status=status.HTTP_400_BAD_REQUEST)
 
     def post(self, request, *args, **kwargs):
-        return self.put_seller_info(request)
+        params = request.data.copy()
+
+        login_id = params.get('username')
+
+        params['login_id'] = params['username']
+        params['password_hash'] = params['password']
 
 
-    def get_seller_info(self, request):
-        username = request.GET.get('username')
-        password_hash = request.GET.get('password_hash')
+        # login_id 중복 확인
+        if User.objects.filter(login_id=login_id).exists():
+            return Response({'error': 'login_id already exists'}, status=status.HTTP_400_BAD_REQUEST)
 
-        if not username or not password_hash:
-            return JsonResponse({'error': 'Username and password_hash are required.'}, status=400)
-
-        try:
-            # Fetch the Buyer based on username and password_hash
-            seller = Seller.objects.get(username=username, password_hash=password_hash)
-
-            # Prepare the response data
-            seller_info = {
-                'id': seller.id,
-                'username': seller.username,
-                'seller_name': seller.seller_name,
-                'email': seller.email,
-                'no_bizcode': seller.no_bizcode,
-                'no_social': seller.no_social,
-                'first_name': seller.first_name,
-                'last_name': seller.last_name,
-                'phone_number': seller.phone_number,
-                'point': str(seller.point),  # Convert Decimal to string for JSON serialization
-                'coupon_list': seller.coupon_list,
-                'created_at': seller.created_at.isoformat(),
-                'updated_at': seller.updated_at.isoformat(),
-            }
-
-            return JsonResponse(seller_info, status=200)
-
-        except Seller.DoesNotExist:
-            return JsonResponse({'error': 'Buyer not found.'}, status=404)
-
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=500)
-
-    def put_seller_info(self, request):
-        # 여기에 PUT 요청을 처리하는 로직을 작성합니다.
-        return JsonResponse({'message': 'PUT user info'})
-
-    def post_seller_info(self, request):
-        # 여기에 PUT 요청을 처리하는 로직을 작성합니다.
-        return JsonResponse({'message': 'PUT user info'})
-
-
-class User_buyer_info(View):
-    def get(self, request, *args, **kwargs):
-        '''
-        :param request: http get
-            - username (str): The username of the Buyer.
-            - password_hash (str): The password hash of the Buyer.
-
-        :return: JsonResponse
-        '''
-        return self.get_buyer_info(request)
+        serializer = UserSerializer(data=params)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, *args, **kwargs):
-        return self.put_buyer_info(request)
+        return Response([], status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, *args, **kwargs):
+        return Response([], status=status.HTTP_400_BAD_REQUEST)
+
+class Signin(APIView):
+    def get(self, request, *args, **kwargs):
+        return Response([], status=status.HTTP_400_BAD_REQUEST)
 
     def post(self, request, *args, **kwargs):
-        return self.put_buyer_info(request)
-
-
-    def get_buyer_info(self, request):
-        username = request.GET.get('username')
-        password_hash = request.GET.get('password_hash')
-
-        if not username or not password_hash:
-            return JsonResponse({'error': 'Username and password_hash are required.'}, status=400)
-
+        login_id = request.data.get('username')
+        password_hash = request.data.get('password')
+        if not login_id or not password_hash:
+            return Response({'error': 'Missing login_id or password_hash'}, status=status.HTTP_400_BAD_REQUEST)
         try:
-            # Fetch the Buyer based on username and password_hash
-            buyer = Buyer.objects.get(username=username, password_hash=password_hash)
+            # 사용자 조회 (password_hash 검증은 해시 값으로 비교하는 방식으로 변경 가능)
+            serializer = CustomTokenObtainPairSerializer(data=request.data)
+            if serializer.is_valid():
+                return Response(serializer.validated_data, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except User.DoesNotExist:
+            return Response({'error': 'User not found or invalid credentials'}, status=status.HTTP_404_NOT_FOUND)
 
-            # Prepare the response data
-            buyer_info = {
-                'id': buyer.id,
-                'username': buyer.username,
-                'email': buyer.email,
-                'first_name': buyer.first_name,
-                'last_name': buyer.last_name,
-                'phone_number': buyer.phone_number,
-                'point': str(buyer.point),  # Convert Decimal to string for JSON serialization
-                'coupon_list': buyer.coupon_list,
-                'created_at': buyer.created_at.isoformat(),
-                'updated_at': buyer.updated_at.isoformat(),
-            }
+    def put(self, request, *args, **kwargs):
+        return Response([], status=status.HTTP_400_BAD_REQUEST)
 
-            return JsonResponse(buyer_info, status=200)
-
-        except Buyer.DoesNotExist:
-            return JsonResponse({'error': 'Buyer not found.'}, status=404)
-
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=500)
-
-    def put_buyer_info(self, request):
-        # 여기에 PUT 요청을 처리하는 로직을 작성합니다.
-        return JsonResponse({'message': 'PUT user info'})
-
-    def post_buyer_info(self, request):
-        # 여기에 PUT 요청을 처리하는 로직을 작성합니다.
-        return JsonResponse({'message': 'PUT user info'})
+    def delete(self, request, *args, **kwargs):
+        return Response([], status=status.HTTP_400_BAD_REQUEST)
