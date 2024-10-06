@@ -59,9 +59,7 @@ export default function ProductForm() {
       </div>
       <Separator className="w-full bg-[#E2E2E2] h-[1px] max-w-[363px]" />
 
-      <div className="px-4">
-        <AccordionDemo />
-      </div>
+      <AccordionDemo />
     </div>
   );
 }
