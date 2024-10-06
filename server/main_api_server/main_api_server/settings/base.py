@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-udxf#uf^k+2oi0-tdp61zxb2d$8&nm6g(+%o9wfb^$^e(7=x0$'
+SECRET_KEY = 'lgc*(yuw90m1qq9-b_i!rm4ktgtf=qhh2e(55vj8rh5twq-0bb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -148,4 +148,6 @@ from datetime import timedelta
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ALGORITHM': 'HS256',  # 서명 알고리즘
+    'SIGNING_KEY': SECRET_KEY,  # 위에서 정의한 SECRET_KEY를 사용
 }
