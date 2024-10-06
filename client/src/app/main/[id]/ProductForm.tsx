@@ -1,7 +1,7 @@
 "use client";
 
 import AccordionDemo from "@/components/AccordionComponent";
-import AccordionComponent from "@/components/AccordionComponent";
+import ShareKakao from "@/components/ShareKakao";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { Share2Icon } from "@radix-ui/react-icons";
 import { PlusIcon } from "@radix-ui/react-icons";
@@ -25,7 +25,14 @@ export default function ProductForm() {
             className="font-black"
             onClick={() => router.back()}
           />
-          <Share2Icon width={25} height={25} className="font-black" />
+          <ShareKakao
+            title=""
+            imageUrl=""
+            link={{
+              webUrl: "",
+              mobileWebUrl: "",
+            }}
+          />
         </div>
         <Image
           src={"/images/product/img-shoes.png"}
