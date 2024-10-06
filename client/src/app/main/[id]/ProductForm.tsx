@@ -1,5 +1,6 @@
 "use client";
 
+import AccordionDemo from "@/components/AccordionComponent";
 import AccordionComponent from "@/components/AccordionComponent";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { Share2Icon } from "@radix-ui/react-icons";
@@ -59,13 +60,7 @@ export default function ProductForm() {
       <Separator className="w-full bg-[#E2E2E2] h-[1px] max-w-[363px]" />
 
       <div className="px-4">
-        <AccordionComponent
-          collapsible
-          itemValue="tset"
-          header="상품 설명"
-          content="상품 설명 내용"
-          defaultValue="222"
-        />
+        <AccordionDemo />
       </div>
     </div>
   );
