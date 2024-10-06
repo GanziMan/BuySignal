@@ -86,7 +86,11 @@ export default function MenuBar() {
           textAlign: "center",
         }}
       >
-        <motion.li style={framerListyle} variants={itemVariants}>
+        <motion.li
+          style={framerListyle}
+          variants={itemVariants}
+          onClick={() => router.push("/account/login")}
+        >
           로그인
         </motion.li>
         <motion.li

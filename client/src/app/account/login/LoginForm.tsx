@@ -1,11 +1,13 @@
 "use client";
 
+import createUser from "@/app/api/user/createUser";
 import { TextField } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export default function LoginForm() {
+export default async function LoginForm() {
   const router = useRouter();
+
   return (
     <div className="h-screen flex flex-col gap-[20px]">
       <Image
@@ -47,6 +49,7 @@ export default function LoginForm() {
           >
             계정이 없으신가요?
           </p>
+          <p onClick={async () => await createUser()}>테스트 계정 생성</p>
         </div>
       </div>
     </div>
