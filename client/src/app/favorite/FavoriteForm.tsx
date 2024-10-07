@@ -45,12 +45,10 @@ export default function FavoriteForm() {
                       <p className="text-base font-bold">
                         나이키 운동화 에어맥스
                       </p>
-                      <p className="text-sm text-[#7C7C7C]">한켤레당 가격 </p>
+                      <p className="font-semibold text-sm">110,000원</p>
                     </div>
-                    <div className="flex gap-4 items-center">
-                      <p className="font-semibold">110</p>
-                      <ChevronRightIcon width={20} height={20} />
-                    </div>
+
+                    <ChevronRightIcon width={20} height={20} />
                   </div>
                 </div>
               </div>
