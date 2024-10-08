@@ -1,4 +1,4 @@
-export function FailPage() {
+export default function FailPage() {
   return (
     <div className="result wrapper">
       <div className="box_section">
