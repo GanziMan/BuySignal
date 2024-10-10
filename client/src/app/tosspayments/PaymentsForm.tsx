@@ -128,7 +128,7 @@ export default function PaymentsForm() {
               }
             }}
           >
-            도현이 야추 결제
+            결제하기
           </button>
         </div>
       </div>
