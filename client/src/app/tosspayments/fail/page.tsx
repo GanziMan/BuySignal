@@ -1,11 +1,22 @@
+"use client";
+import PageContainer from "@/components/PageContainer";
+import { useSearchParams } from "next/navigation";
+import { FailForm } from "./FailForm";
+import { Suspense } from "react";
+
 export default function FailPage() {
   return (
-    <div className="result wrapper">
-      <div className="box_section">
-        <h2>결제 실패</h2>
-        {/* <p>{`에러 코드: ${searchParams.get("code")}`}</p>
-        <p>{`실패 사유: ${searchParams.get("message")}`}</p> */}
-      </div>
-    </div>
+    <Suspense fallback={<div>...Loading</div>}>
+      <PageContainer>
+        <FailContent></FailContent>
+      </PageContainer>
+    </Suspense>
   );
+}
+
+function FailContent() {
+  const searchParams = useSearchParams();
+  const errorCode = searchParams.get("code");
+  const errorMessage = searchParams.get("message");
+  return <FailForm errorCode={errorCode!} errorMessage={errorMessage!} />;
 }
