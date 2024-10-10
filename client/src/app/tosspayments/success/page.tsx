@@ -1,7 +1,7 @@
 "use client";
-import { useEffect } from "react";
 import { SuccessForm } from "./SuccessForm";
 import { useSearchParams } from "next/navigation";
+import PageContainer from "@/components/PageContainer";
 
 export default function SuccessPage() {
   const searchParams = useSearchParams();
@@ -9,6 +9,14 @@ export default function SuccessPage() {
   const amount = searchParams.get("amount");
   const paymentKey = searchParams.get("paymentKey");
   return (
-    <SuccessForm orderId={orderId!} amount={amount!} paymentKey={paymentKey!} />
+    <PageContainer
+      children={
+        <SuccessForm
+          orderId={orderId!}
+          amount={amount!}
+          paymentKey={paymentKey!}
+        />
+      }
+    ></PageContainer>
   );
 }
