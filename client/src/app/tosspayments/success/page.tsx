@@ -1,3 +1,4 @@
+"use client";
 import { SuccessForm } from "./SuccessForm";
 import { useSearchParams } from "next/navigation";
 import PageContainer from "@/components/PageContainer";
