@@ -1,7 +1,7 @@
-"use client";
 import { SuccessForm } from "./SuccessForm";
 import { useSearchParams } from "next/navigation";
 import PageContainer from "@/components/PageContainer";
+import { Suspense } from "react";
 
 export default function SuccessPage() {
   const searchParams = useSearchParams();
@@ -11,11 +11,13 @@ export default function SuccessPage() {
   return (
     <PageContainer
       children={
-        <SuccessForm
-          orderId={orderId!}
-          amount={amount!}
-          paymentKey={paymentKey!}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <SuccessForm
+            orderId={orderId!}
+            amount={amount!}
+            paymentKey={paymentKey!}
+          />
+        </Suspense>
       }
     ></PageContainer>
   );
