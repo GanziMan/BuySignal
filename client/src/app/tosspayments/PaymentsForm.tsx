@@ -16,7 +16,7 @@ const customerKey = "d82M6h3ApWZRkRRqnbCOk";
 export default function PaymentsForm() {
   const [amount, setAmount] = useState<AmountType>({
     currency: "KRW",
-    value: 50_000,
+    value: 500,
   });
   const [ready, setReady] = useState<boolean>(false);
   const [widgets, setWidgets] = useState<TossPaymentsWidgets | null>(null);
@@ -114,7 +114,7 @@ export default function PaymentsForm() {
                 // 결제를 요청하기 전에 orderId, amount를 서버에 저장하세요.
                 // 결제 과정에서 악의적으로 결제 금액이 바뀌는 것을 확인하는 용도입니다.
                 await widgets?.requestPayment({
-                  orderId: "kn_BWEaFAqo7BQQvCRPKX",
+                  orderId: "kn_BWEaFAqo7BQQvCRPK1",
                   orderName: "토스 티셔츠 외 2건",
                   successUrl: window.location.origin + "/tosspayments/success",
                   failUrl: window.location.origin + "/tosspayments/fail",
