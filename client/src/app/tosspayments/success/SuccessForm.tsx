@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { PaymentConfirm } from "../action";
 
-export function SuccessForm({
+export default function SuccessForm({
   orderId,
   amount,
   paymentKey,
