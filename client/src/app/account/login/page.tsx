@@ -1,6 +1,5 @@
 import PageContainer from "@/components/PageContainer";
 import LoginForm from "./LoginForm";
-import createUser from "@/app/api/user/createUser";
 
 export default async function LoginPage() {
   const data = await fetch("http://150.230.251.153:8000/items/item/")

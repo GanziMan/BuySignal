@@ -27,11 +27,13 @@ const AccordionDemo: React.FC = () => (
     >
       <AccordionTrigger>상품 설명</AccordionTrigger>
       <AccordionContent>
-        빛이 그대로 살아 있는 나이키 에어 포스 1 ’07은 OG 농구화로서 많은 사랑을
-        받아온 디자인에 새로운 멋을 더했습니다. 튼튼하게 스티치 처리된
-        오버레이와 깔끔한 마감 처리, 과하지 않은 절제된 화려함으로 빛나는
-        존재감을 발휘해 보세요. 현재 컬러: 화이트/화이트 스타일 번호: CW2288-111
-        제조 국가/지역: 중국, 인도, 베트남
+        <p className="px-4">
+          빛이 그대로 살아 있는 나이키 에어 포스 1 ’07은 OG 농구화로서 많은
+          사랑을 받아온 디자인에 새로운 멋을 더했습니다. 튼튼하게 스티치 처리된
+          오버레이와 깔끔한 마감 처리, 과하지 않은 절제된 화려함으로 빛나는
+          존재감을 발휘해 보세요. 현재 컬러: 화이트/화이트 스타일 번호:
+          CW2288-111 제조 국가/지역: 중국, 인도, 베트남
+        </p>
       </AccordionContent>
     </Accordion.Item>
     <Separator className="w-full bg-[#E2E2E2] h-[1px] " />
@@ -42,8 +44,10 @@ const AccordionDemo: React.FC = () => (
     >
       <AccordionTrigger>사이즈 & 팁</AccordionTrigger>
       <AccordionContent>
-        정사이즈보다 크게 나온 제품으로, 반 사이즈 작게 주문하는 것을
-        추천드립니다. 사이즈 가이드
+        <p className="px-4">
+          정사이즈보다 크게 나온 제품으로, 반 사이즈 작게 주문하는 것을
+          추천드립니다. 사이즈 가이드
+        </p>
       </AccordionContent>
     </Accordion.Item>
     <Separator className="w-full bg-[#E2E2E2] h-[1px] " />
@@ -54,7 +58,7 @@ const AccordionDemo: React.FC = () => (
     >
       <AccordionTrigger>리뷰</AccordionTrigger>
       <AccordionContent>
-        <div className="p-4"></div>
+        <p className="px-4">아직 작성된건 없습니다.</p>
       </AccordionContent>
     </Accordion.Item>
   </Accordion.Root>
@@ -67,7 +71,7 @@ const AccordionTrigger = React.forwardRef<
   <Accordion.Header className="flex">
     <Accordion.Trigger
       className={classNames(
-        "bg-transparent px-5 h-[45px] flex items-center justify-between text-[15px] leading-none text-violet-11 shadow-[0_1px_0_var(--mauve-6)] bg-white hover:bg-mauve-2 transition-all",
+        "bg-transparent px-5 h-[45px] flex items-center gap-2 justify-between text-[15px] leading-none text-violet-11 shadow-[0_1px_0_var(--mauve-6)] bg-white hover:bg-mauve-2 transition-all",
         className
       )}
       {...props}

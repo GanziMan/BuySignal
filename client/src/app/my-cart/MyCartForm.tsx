@@ -159,7 +159,7 @@ export default function MyCartForm() {
                 </Portal>
               </Dialog> */}
               <button
-                onClick={() => router.push("/order/success")}
+                onClick={() => router.push("/tosspayments")}
                 className="bg-[#489E67] text-white max-w-[344px] w-full h-[57px] rounded-2xl flex justify-center items-center"
               >
                 <p className="text-lg font-semibold">결제하기</p>
