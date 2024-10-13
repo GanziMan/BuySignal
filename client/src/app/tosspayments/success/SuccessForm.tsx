@@ -36,8 +36,6 @@ export default function SuccessForm({
         paymentKey,
       });
 
-      console.log(response);
-
       // const json = await response.json();
 
       // if (!response.ok) {
