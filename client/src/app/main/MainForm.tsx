@@ -60,7 +60,6 @@ export default function MainForm() {
     }
   }, []);
 
-  console.log(location);
   useEffect(() => {
     if (!location) return; // 위치가 없으면 리턴
 
