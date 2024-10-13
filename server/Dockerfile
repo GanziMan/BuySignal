@@ -6,6 +6,8 @@ WORKDIR /app
 
 # requirements.txt 복사 및 패키지 설치
 COPY requirements.txt /app/
+RUN pip install setuptools
+RUN pip install --no-cache-dir gunicorn
 RUN pip install -r requirements.txt
 
 # Django 프로젝트 전체를 복사
