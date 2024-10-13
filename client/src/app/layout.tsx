@@ -3,7 +3,7 @@ import "./globals.css";
 import { Theme as RadixTheme } from "@radix-ui/themes";
 import { RootToaster } from "@/Provider/RootToaster";
 import Head from "next/head";
-import { Inter, Poppins, Fredoka } from "next/font/google";
+import { Fredoka } from "next/font/google";
 
 const fredoka = Fredoka({
   weight: ["400", "700"],

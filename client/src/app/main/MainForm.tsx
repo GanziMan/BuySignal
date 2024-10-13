@@ -4,7 +4,6 @@ import SearchComponent from "@/components/SearchComponent";
 import Image from "next/image";
 
 import "react-multi-carousel/lib/styles.css";
-import NavBar from "@/components/NavBar";
 import ThisWeekProduct from "./components/ThisWeekProduct";
 import CarouselProuduct from "./components/CarouselProduct";
 import { useEffect, useState } from "react";
