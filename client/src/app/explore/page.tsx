@@ -5,7 +5,9 @@ import NavBar from "@/components/NavBar";
 export default function ExplorePage() {
   return (
     <>
-      <PageContainer children={<ExploreForm />} />
+      <PageContainer>
+        <ExploreForm />
+      </PageContainer>
       <NavBar />
     </>
   );

@@ -5,7 +5,9 @@ import NavBar from "@/components/NavBar";
 export default function MyCartPage() {
   return (
     <>
-      <PageContainer children={<MyCartForm />} />
+      <PageContainer>
+        <MyCartForm />
+      </PageContainer>
       <NavBar />
     </>
   );

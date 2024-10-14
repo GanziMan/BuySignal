@@ -5,13 +5,9 @@ import NavBar from "@/components/NavBar";
 export default function MainPage() {
   return (
     <>
-      <PageContainer
-        children={
-          <>
-            <MainForm />
-          </>
-        }
-      />
+      <PageContainer>
+        <MainForm />
+      </PageContainer>
       <NavBar />
     </>
   );

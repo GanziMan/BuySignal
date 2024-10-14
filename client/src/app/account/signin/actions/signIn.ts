@@ -5,7 +5,7 @@ import { SignInRequest, signinSchema } from "./signinSchema";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { JWTExpired } from "jose/errors";
-import { NextApiResponse } from "next";
+import { cookies } from "next/headers";
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
 
@@ -23,9 +23,9 @@ export type SigninResponse =
       accessToken?: string;
       refreshToken?: string;
     };
+
 export default async function signIn(
-  request: SignInRequest,
-  res: NextApiResponse
+  request: SignInRequest
 ): Promise<SigninResponse> {
   const validated = signinSchema.safeParse(request);
 
@@ -68,11 +68,22 @@ export default async function signIn(
       REFRESH_TOKEN_SECRET!,
       { expiresIn: REFRESH_TOKEN_EXPIRY }
     );
-
-    res.setHeader("Set-Cookie", [
-      `accessToken=${accessToken}; HttpOnly; Path=/; Max-Age=900; Secure; SameSite=Strict`,
-      `refreshToken=${refreshToken}; HttpOnly; Path=/; Max-Age=86400; Secure; SameSite=Strict`,
-    ]);
+    // 쿠키 설정
+    const cookiesStore = cookies();
+    cookiesStore.set("accessToken", accessToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+      maxAge: 60 * 15, // 15분
+      path: "/",
+    });
+    cookiesStore.set("refreshToken", refreshToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+      maxAge: 60 * 60 * 24, // 1일
+      path: "/",
+    });
 
     // // 토큰이 존재하는지
     // const existingToken = await prisma.token.findFirst({

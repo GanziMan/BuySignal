@@ -5,7 +5,10 @@ import NavBar from "@/components/NavBar";
 export default async function ExploreSearchPage() {
   return (
     <>
-      <PageContainer children={<ExploreSearchForm />} /> <NavBar />
+      <PageContainer>
+        <ExploreSearchForm />
+      </PageContainer>{" "}
+      <NavBar />
     </>
   );
 }

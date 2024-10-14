@@ -5,7 +5,9 @@ import NavBar from "@/components/NavBar";
 export default async function FavoritePage() {
   return (
     <>
-      <PageContainer children={<FavoriteForm />} />
+      <PageContainer>
+        <FavoriteForm />
+      </PageContainer>
       <NavBar />
     </>
   );
