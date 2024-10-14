@@ -3,6 +3,7 @@
 import { SignUpRequest, signUpSchema } from "./signUpSchema";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
+import { randomUUID } from "crypto";
 
 export type SignUpResponse = {
   code: 400 | 200;
@@ -43,6 +44,7 @@ export default async function signUp(
 
     await prisma.user.create({
       data: {
+        id: randomUUID(),
         email,
         password: hashedPassword,
         name,
