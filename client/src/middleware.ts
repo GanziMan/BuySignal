@@ -3,22 +3,31 @@ import { jwtVerify, SignJWT } from "jose";
 import {
   ACCESS_TOKEN_EXPIRY,
   ACCESS_TOKEN_SECRET,
+  DOMAIN_URL,
   REFRESH_TOKEN_EXPIRY,
   REFRESH_TOKEN_SECRET,
 } from "./app/config/server";
 import { JWTExpired } from "jose/errors";
 export const PUBLIC_PATHS = ["/account/login", "/account/signup"];
 export default async function middleware(req: NextRequest) {
-  const { pathname, origin } = req.nextUrl;
+  const { pathname } = req.nextUrl;
   const isPublic = PUBLIC_PATHS.some((path) => pathname.startsWith(path));
+
+  // Allow access to public paths
+  if (isPublic) {
+    return NextResponse.next();
+  }
 
   if (!isPublic) {
     //토큰처리
     const accessToken = req.cookies.get("accessToken");
     const refreshToken = req.cookies.get("refreshToken");
 
-    if (accessToken?.value == null) {
-      return NextResponse.redirect("/account/signin");
+    if (!accessToken?.value) {
+      if (pathname !== "/account/signin") {
+        return NextResponse.redirect(DOMAIN_URL + "/account/signin");
+      }
+      return NextResponse.next();
     }
 
     try {
@@ -51,17 +60,13 @@ export default async function middleware(req: NextRequest) {
 
           return res;
         } catch (error) {
-          return NextResponse.redirect("/account/signin");
+          return NextResponse.redirect(DOMAIN_URL + "/account/signin");
         }
       } else {
-        return NextResponse.redirect("/account/signin");
+        return NextResponse.redirect(DOMAIN_URL + "/account/signin");
       }
     }
   }
-
-  // if (pathname === "/") {
-  //   return NextResponse.redirect(`${origin + "/signin"}`);
-  // }
 
   return NextResponse.next({ request: req });
 }
