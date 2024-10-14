@@ -11,3 +11,5 @@ export const REFRESH_TOKEN_SECRET = new TextEncoder().encode(
 export const ACCESS_TOKEN_EXPIRY = "15m";
 
 export const REFRESH_TOKEN_EXPIRY = "7d";
+
+export const DOMAIN_URL = process.env.NEXT_PUBLIC_DOMAIN_URL;
