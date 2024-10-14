@@ -16,7 +16,7 @@ datasource db {
 
 
 model User {
-  id        Int     @id @default(autoincrement())
+  id        String      @id @default(uuid())
   email     String? @unique // nullable로 설정
   password  String
   name      String?
@@ -26,8 +26,8 @@ model User {
 }
 
 model Token {
-  id              Int      @id @default(autoincrement())
-  userId          Int
+  id              String      @id @default(uuid())
+  userId          String
   accessToken     String   @unique
   refreshToken    String   @unique
   accessTokenExpires  DateTime
