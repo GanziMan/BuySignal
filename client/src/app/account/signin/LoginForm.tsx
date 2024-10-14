@@ -2,12 +2,37 @@
 import { TextField } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import signIn from "./actions/signIn";
+import toast from "react-hot-toast";
 
+interface SignInType {
+  email: string;
+  password: string;
+}
 export default async function LoginForm() {
   const router = useRouter();
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInType>();
+
   return (
-    <div className="h-screen flex flex-col gap-[20px]">
+    <form
+      onSubmit={handleSubmit(async (data) => {
+        await signIn(data).then((res) => {
+          if (res.code === 200) {
+            toast.success(res.message);
+            router.push("/main");
+          } else {
+            toast.error(res.message);
+          }
+        });
+      })}
+      className="h-screen flex flex-col gap-[20px]"
+    >
       <Image
         src={"/images/account/img-header.png"}
         alt=""
@@ -22,6 +47,7 @@ export default async function LoginForm() {
             label="Email"
             variant="standard"
             className="block w-full"
+            {...register("email")}
             InputProps={{
               sx: { width: "100%" },
             }}
@@ -32,6 +58,7 @@ export default async function LoginForm() {
             variant="standard"
             className="block  w-full"
             type="password"
+            {...register("password")}
             InputProps={{
               sx: { width: "100%" },
             }}
@@ -49,6 +76,6 @@ export default async function LoginForm() {
           </p>
         </div>
       </div>
-    </div>
+    </form>
   );
 }
