@@ -2,10 +2,37 @@
 
 import { TextField } from "@mui/material";
 import Image from "next/image";
+import { useForm } from "react-hook-form";
+import signUp from "./actions/signUp";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
+interface SignUpType {
+  email: string;
+  password: string;
+  name: string;
+}
 export default function SignUpForm() {
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignUpType>();
+
   return (
-    <div className="h-screen flex flex-col gap-[20px]">
+    <form
+      onSubmit={handleSubmit(
+        async (data) =>
+          await signUp(data).then((res) => {
+            if (res.code === 200) {
+              toast.success("회원가입이 되었습니다.");
+              router.push("/account/signin");
+            }
+          })
+      )}
+      className="h-screen flex flex-col gap-[20px]"
+    >
       <Image
         src={"/images/account/img-header.png"}
         alt=""
@@ -17,38 +44,44 @@ export default function SignUpForm() {
         <div className="flex flex-col gap-6">
           <TextField
             id="standard-basic"
-            label="UserName"
+            label="이름"
             variant="standard"
             className="block w-full"
+            {...register("name")}
             InputProps={{
               sx: { width: "100%" },
             }}
           />
           <TextField
             id="standard-basic"
-            label="Email"
+            label="이메일"
             variant="standard"
             className="block w-full"
+            {...register("email")}
             InputProps={{
               sx: { width: "100%" },
             }}
           />
           <TextField
             id="standard-basic"
-            label="Password"
+            label="비밀번호"
             variant="standard"
             className="block  w-full"
             type="password"
+            {...register("password")}
             InputProps={{
               sx: { width: "100%" },
             }}
           />
         </div>
 
-        <button className="w-full h-[57px] text-lg bg-[#53B175] flex justify-center items-center text-white rounded-[19px]">
+        <button
+          type="submit"
+          className="w-full h-[57px] text-lg bg-[#53B175] flex justify-center items-center text-white rounded-[19px]"
+        >
           회원가입
         </button>
       </div>
-    </div>
+    </form>
   );
 }
