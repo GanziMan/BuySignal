@@ -28,6 +28,8 @@ export default function SignUpForm() {
             if (res.code === 200) {
               toast.success("회원가입이 되었습니다.");
               router.push("/account/signin");
+            } else {
+              toast.error(res.message);
             }
           })
       )}

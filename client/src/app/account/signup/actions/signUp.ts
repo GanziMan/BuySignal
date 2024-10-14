@@ -25,19 +25,19 @@ export default async function signUp(
 
   const prisma = new PrismaClient();
 
+  const existingUser = await prisma.user.findUnique({
+    where: { email },
+  });
+
+  // 이메일 중복 검증
+  if (existingUser) {
+    return {
+      code: 400,
+      message: "이미 존재하는 회원입니다.",
+    };
+  }
+
   try {
-    const existingUser = await prisma.user.findUnique({
-      where: { email },
-    });
-
-    // 이메일 중복 검증
-    if (existingUser) {
-      return {
-        code: 400,
-        message: "이미 존재하는 회원입니다.",
-      };
-    }
-
     // 비밀번호 해싱
     const hashedPassword = await bcrypt.hash(password, 10);
 
