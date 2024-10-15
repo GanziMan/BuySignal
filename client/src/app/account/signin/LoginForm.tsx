@@ -1,6 +1,6 @@
 "use client";
+
 import { TextField } from "@mui/material";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import signIn from "./actions/signIn";
@@ -10,7 +10,7 @@ interface SignInType {
   email: string;
   password: string;
 }
-export default async function LoginForm() {
+export default function LoginForm() {
   const router = useRouter();
 
   const {
@@ -21,8 +21,8 @@ export default async function LoginForm() {
 
   return (
     <form
-      onSubmit={handleSubmit(async (data) => {
-        await signIn(data).then((res) => {
+      onSubmit={handleSubmit((data) => {
+        signIn(data).then((res) => {
           if (res.code === 200) {
             toast.success(res.message);
             router.push("/main");
@@ -33,13 +33,13 @@ export default async function LoginForm() {
       })}
       className="h-screen flex flex-col gap-[20px]"
     >
-      <Image
+      {/* <Image
         src={"/images/account/img-header.png"}
         alt=""
         width={0}
         height={233}
         className="w-full"
-      />
+      /> */}
       <div className="flex flex-col gap-[64px]  px-10">
         <div className="flex flex-col gap-6">
           <TextField
