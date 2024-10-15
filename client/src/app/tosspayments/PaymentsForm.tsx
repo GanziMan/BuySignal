@@ -1,4 +1,5 @@
 "use client";
+
 import {
   loadTossPayments,
   TossPaymentsWidgets,
@@ -27,12 +28,11 @@ export default function PaymentsForm() {
       // ------  결제위젯 초기화 ------
       const tossPayments = await loadTossPayments(clientKey);
       // 회원 결제
-      const widgets = tossPayments.widgets({
+      const widgets = tossPayments?.widgets({
         customerKey,
       });
       // 비회원 결제
       // const widgets = tossPayments.widgets({ customerKey: ANONYMOUS });
-
       setWidgets(widgets);
     }
 
@@ -40,14 +40,14 @@ export default function PaymentsForm() {
   }, [clientKey, customerKey]);
 
   useEffect(() => {
-    async function renderPaymentWidgets() {
+    function renderPaymentWidgets() {
       if (widgets == null) {
         return;
       }
       // ------ 주문의 결제 금액 설정 ------
-      await widgets.setAmount(amount);
+      widgets.setAmount(amount);
 
-      await Promise.all([
+      Promise.all([
         // ------  결제 UI 렌더링 ------
         widgets.renderPaymentMethods({
           selector: "#payment-method",
@@ -108,12 +108,12 @@ export default function PaymentsForm() {
           <button
             className="bg-[#1F4EF5] h-[53px] max-w-[345px] w-full flex justify-center items-center text-white text-xl rounded-2xl"
             disabled={!ready}
-            onClick={async () => {
+            onClick={() => {
               try {
                 // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
                 // 결제를 요청하기 전에 orderId, amount를 서버에 저장하세요.
                 // 결제 과정에서 악의적으로 결제 금액이 바뀌는 것을 확인하는 용도입니다.
-                await widgets?.requestPayment({
+                widgets?.requestPayment({
                   orderId: "kn_BWEaFAqo7BQQvCRPK1",
                   orderName: "토스 티셔츠 외 2건",
                   successUrl: window.location.origin + "/tosspayments/success",

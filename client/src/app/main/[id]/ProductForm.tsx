@@ -3,7 +3,6 @@
 import AccordionDemo from "@/components/AccordionComponent";
 import ShareKakao from "@/components/ShareKakao";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import { Share2Icon } from "@radix-ui/react-icons";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { MinusIcon } from "@radix-ui/react-icons";
 

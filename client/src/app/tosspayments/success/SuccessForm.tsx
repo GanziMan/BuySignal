@@ -21,7 +21,7 @@ export default function SuccessForm({
       paymentKey,
     };
 
-    async function confirm() {
+    function confirm() {
       // const response = await fetch("/api/confirm", {
       //   method: "POST",
       //   headers: {
@@ -30,7 +30,7 @@ export default function SuccessForm({
       //   body: JSON.stringify(requestData),
       // });
 
-      const response = await PaymentConfirm({
+      const response = PaymentConfirm({
         orderId,
         amount: Number(amount),
         paymentKey,
@@ -151,4 +151,3 @@ export default function SuccessForm({
     </div>
   );
 }
-  
