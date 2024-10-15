@@ -45,9 +45,10 @@ export default function NavBar() {
   return (
     <>
       <nav className="bg-white max-w-[600px] w-full fixed  left-1/2 transform -translate-x-1/2 bottom-0 rounded-t-2xl h-[92px] shadow-2xl flex justify-between px-[30px] py-4 items-center z-[1000px]">
-        {navBarData.map((item) => {
+        {navBarData.map((item, index) => {
           return (
             <div
+              key={index}
               onClick={() => router.push("/" + item.url)}
               className={twMerge(
                 "flex flex-col w-[70px] h-[70px] rounded-full gap-2 justify-center items-center cursor-pointer",

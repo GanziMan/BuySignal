@@ -23,7 +23,7 @@ export default function ShareKakao({
   link: LinkType;
 }) {
   const handleShare = () => {
-    window.Kakao?.Share.sendDefault({
+    window.Kakao?.Share?.sendDefault({
       objectType: "feed",
       content: {
         title: "모바일 청첩장",
