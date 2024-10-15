@@ -8,6 +8,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Image from "next/image";
 import { Drawer } from "@mui/material";
+import signOut from "@/features/auth/signOut";
 
 export default function SideBar({
   state,
@@ -57,7 +58,10 @@ export default function SideBar({
         ))}
       </List>
 
-      <button className="w-[157px] h-[37px] flex justify-center items-center absolute bottom-10 left-1/2 transform -translate-x-1/2 rounded-[19px] bg-[#F2F3F2] ">
+      <button
+        onClick={() => signOut()}
+        className="w-[157px] h-[37px] flex justify-center items-center absolute bottom-10 left-1/2 transform -translate-x-1/2 rounded-[19px] bg-[#F2F3F2]"
+      >
         <p className="font-semibold text-[#53B175]">로그아웃</p>
       </button>
     </Box>
