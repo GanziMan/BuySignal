@@ -42,27 +42,42 @@ export default function LoginForm() {
       /> */}
       <div className="flex flex-col gap-[64px]  px-10">
         <div className="flex flex-col gap-6">
-          <TextField
-            id="standard-basic"
-            label="Email"
-            variant="standard"
-            className="block w-full"
-            {...register("email")}
-            InputProps={{
-              sx: { width: "100%" },
-            }}
-          />
-          <TextField
-            id="standard-basic"
-            label="Password"
-            variant="standard"
-            className="block  w-full"
-            type="password"
-            {...register("password")}
-            InputProps={{
-              sx: { width: "100%" },
-            }}
-          />
+          <div className="flex flex-col gap-1">
+            <TextField
+              id="standard-basic"
+              label="Email"
+              variant="standard"
+              className="block w-full"
+              {...register("email", {
+                required: "필수 값입니다.",
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: "이메일 형식이 옳바르지 않습니다.",
+                },
+              })}
+              InputProps={{
+                sx: { width: "100%" },
+              }}
+            />
+            {errors.email && (
+              <p className="text-red-600 text-xs">{errors.email.message}</p>
+            )}
+          </div>
+          <div className="flex flex-col gap-1">
+            <TextField
+              id="standard-basic"
+              label="Password"
+              variant="standard"
+              className="block  w-full"
+              type="password"
+              {...register("password", {
+                required: "비밀번호는 필수 값입니다.",
+              })}
+              InputProps={{
+                sx: { width: "100%" },
+              }}
+            />
+          </div>
         </div>
         <div className="flex flex-col justify-center items-center gap-7">
           <button className="w-full h-[57px] text-lg bg-[#53B175] flex justify-center items-center text-white rounded-[19px]">

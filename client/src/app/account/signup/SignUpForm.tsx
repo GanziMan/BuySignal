@@ -53,16 +53,27 @@ export default function SignUpForm() {
               sx: { width: "100%" },
             }}
           />
-          <TextField
-            id="standard-basic"
-            label="이메일"
-            variant="standard"
-            className="block w-full"
-            {...register("email")}
-            InputProps={{
-              sx: { width: "100%" },
-            }}
-          />
+          <div className="flex flex-col gap-1">
+            <TextField
+              id="standard-basic"
+              label="이메일"
+              variant="standard"
+              className="block w-full"
+              {...register("email", {
+                required: "필수 값입니다.",
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: "이메일 형식이 옳바르지 않습니다.",
+                },
+              })}
+              InputProps={{
+                sx: { width: "100%" },
+              }}
+            />
+            {errors.email && (
+              <p className="text-red-600 text-xs">{errors.email.message}</p>
+            )}
+          </div>
           <TextField
             id="standard-basic"
             label="비밀번호"
