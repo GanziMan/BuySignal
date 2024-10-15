@@ -6,11 +6,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { JWTExpired } from "jose/errors";
 import { cookies } from "next/headers";
-const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
-const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
-
-const ACCESS_TOKEN_EXPIRY = "15m";
-const REFRESH_TOKEN_EXPIRY = "1d";
+import { ACCESS_TOKEN_EXPIRY, REFRESH_TOKEN_EXPIRY } from "@/app/config/server";
 
 export type SigninResponse =
   | {
@@ -60,12 +56,16 @@ export default async function signIn(
     };
   }
   try {
-    const accessToken = jwt.sign({ userId: isUser.id }, ACCESS_TOKEN_SECRET!, {
-      expiresIn: ACCESS_TOKEN_EXPIRY,
-    });
+    const accessToken = jwt.sign(
+      { userId: isUser.id },
+      process.env.ACCESS_TOKEN_SECRET!,
+      {
+        expiresIn: ACCESS_TOKEN_EXPIRY,
+      }
+    );
     const refreshToken = jwt.sign(
       { userId: isUser.id },
-      REFRESH_TOKEN_SECRET!,
+      process.env.REFRESH_TOKEN_SECRET!,
       { expiresIn: REFRESH_TOKEN_EXPIRY }
     );
     // 쿠키 설정
@@ -81,7 +81,7 @@ export default async function signIn(
       httpOnly: true,
       secure: true,
       sameSite: "strict",
-      maxAge: 60 * 60 * 24, // 1일
+      maxAge: 60 * 60 * 24 * 7, // 1일
       path: "/",
     });
 
