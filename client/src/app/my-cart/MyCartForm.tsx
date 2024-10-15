@@ -41,9 +41,9 @@ export default function MyCartForm() {
       <section className="h-full w-full flex flex-col gap-6 py-2 items-center">
         <Header label="장바구니" />
         <div className="flex flex-col gap-7">
-          {mockCartData.map((item) => {
+          {mockCartData.map((item, index) => {
             return (
-              <div className="flex flex-col gap-7">
+              <div className="flex flex-col gap-7" key={index}>
                 <Separator className="w-full bg-[#E2E2E2] h-[1px] max-w-[363px]" />
 
                 <div className="flex justify-between gap-8">

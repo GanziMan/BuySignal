@@ -27,9 +27,9 @@ export default function FavoriteForm() {
       <Header label="찜" />
 
       <div className="flex flex-col gap-7">
-        {mockFavoriteData.map((item) => {
+        {mockFavoriteData.map((item, index) => {
           return (
-            <div className="flex flex-col gap-7">
+            <div className="flex flex-col gap-7" key={index}>
               <Separator className="w-full bg-[#E2E2E2] h-[1px] max-w-[363px]" />
 
               <div className="flex justify-between gap-8">

@@ -62,22 +62,23 @@ export default function MainForm() {
   useEffect(() => {
     if (!location) return; // 위치가 없으면 리턴
 
-    const fetchLocationName = async () => {
+    const fetchLocationName = () => {
       try {
-        const response = await fetch(
+        fetch(
           `https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.lat}&lon=${location.lon}`
-        );
-        const data = await response.json();
-
-        if (data && data.display_name) {
-          const addressParts = data.display_name
-            .split(",")
-            .map((part: string) => part.trim());
-          const filteredAddress = addressParts.slice(0, 1).join(" ");
-          setLocationName(addressParts[5] + " " + filteredAddress);
-        } else {
-          setError("Error fetching location name");
-        }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            if (data && data.display_name) {
+              const addressParts = data.display_name
+                .split(",")
+                .map((part: any) => part.trim());
+              const filteredAddress = addressParts.slice(0, 1).join(" ");
+              setLocationName(addressParts[5] + " " + filteredAddress);
+            } else {
+              setError("Error fetching location name");
+            }
+          });
       } catch (err) {
         setError("Error fetching location name: " + err);
       }

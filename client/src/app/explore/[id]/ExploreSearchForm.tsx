@@ -52,9 +52,10 @@ export default function ExploreSearchForm() {
           />
         </div>
         <div className="grid grid-cols-2 gap-3 text-center justify-items-center ">
-          {mockExploreSearchData.map((item) => {
+          {mockExploreSearchData.map((item, index) => {
             return (
               <div
+                key={index}
                 onClick={() => router.push(`/main/1`)}
                 className="max-w-[173px] w-full h-[248px] border rounded-2xl px-[18px] py-5 flex flex-col  items-center"
               >
