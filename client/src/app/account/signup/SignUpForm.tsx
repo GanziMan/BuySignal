@@ -22,26 +22,25 @@ export default function SignUpForm() {
 
   return (
     <form
-      onSubmit={handleSubmit(
-        async (data) =>
-          await signUp(data).then((res) => {
-            if (res.code === 200) {
-              toast.success("회원가입이 되었습니다.");
-              router.push("/account/signin");
-            } else {
-              toast.error(res.message);
-            }
-          })
+      onSubmit={handleSubmit((data) =>
+        signUp(data).then((res) => {
+          if (res.code === 200) {
+            toast.success("회원가입이 되었습니다.");
+            router.push("/account/signin");
+          } else {
+            toast.error(res.message);
+          }
+        })
       )}
       className="h-screen flex flex-col gap-[20px]"
     >
-      <Image
+      {/* <Image
         src={"/images/account/img-header.png"}
         alt=""
         width={0}
         height={233}
         className="w-full"
-      />
+      /> */}
       <div className="flex flex-col gap-[64px]  px-10">
         <div className="flex flex-col gap-6">
           <TextField
