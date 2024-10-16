@@ -14,21 +14,14 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const mockCartData = [
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
+  { name: "나이키 에어맥스 운동화", price: 5000 },
+  { name: "나이키 에어맥스 운동화", price: 5000 },
+  { name: "나이키 에어맥스 운동화", price: 5000 },
+  { name: "나이키 에어맥스 운동화", price: 5000 },
+  { name: "나이키 에어맥스 운동화", price: 5000 },
+  { name: "나이키 에어맥스 운동화", price: 5000 },
+  { name: "나이키 에어맥스 운동화", price: 5000 },
+  { name: "나이키 에어맥스 운동화", price: 5000 },
 ];
 export default function MyCartForm() {
   const router = useRouter();
@@ -36,6 +29,9 @@ export default function MyCartForm() {
   const drawClose = () => {
     setDrawerOpen(false);
   };
+
+  const totalPrice = mockCartData.reduce((acc, item) => acc + item.price, 0);
+
   return (
     <>
       <section className="h-full w-full flex flex-col gap-6 py-2 items-center">
@@ -56,9 +52,7 @@ export default function MyCartForm() {
                   <div className="flex flex-col w-[260px] gap-4">
                     <div className="flex justify-between w-full">
                       <div className="flex flex-col gap-[5px]">
-                        <p className="text-base font-bold">
-                          나이키 운동화 에어맥스
-                        </p>
+                        <p className="text-base font-bold">{item.name}</p>
                         <p className="text-sm text-[#7C7C7C]">한켤레당 가격 </p>
                       </div>
                       <Cross1Icon
@@ -77,7 +71,7 @@ export default function MyCartForm() {
                         <MinusIcon width={20} height={20} />
                       </div>
 
-                      <p className="font-semibold">110</p>
+                      <p className="font-semibold">{item.price}</p>
                     </div>
                   </div>
                 </div>
@@ -90,7 +84,7 @@ export default function MyCartForm() {
           className="bg-[#489E67] text-white max-w-[344px] w-full h-[57px] bottom-[117px] fixed  rounded-2xl flex justify-center items-center z-[1000px]"
         >
           <p className="text-lg font-semibold">구매하기</p>
-          <p className="text-xs">(총 금액)</p>
+          <p className="text-xs">({totalPrice}원)</p>
         </button>
       </section>
       <BottomDrawer
@@ -140,7 +134,7 @@ export default function MyCartForm() {
               <div className="flex justify-between items-center">
                 <p className="font-semibold text-lg text-[#7C7C7C]">총가격</p>
                 <div className="flex gap-[15px] items-center">
-                  <p className="font-semibold">110,000원</p>
+                  <p className="font-semibold">{totalPrice}원</p>
                   <ChevronRightIcon width={18} height={18} />
                 </div>
               </div>
