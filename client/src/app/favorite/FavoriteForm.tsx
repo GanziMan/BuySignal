@@ -58,7 +58,7 @@ export default function FavoriteForm() {
       </div>
       <nav className="bg-[#489E67] text-white max-w-[344px] w-full h-[57px] bottom-[117px] fixed  rounded-2xl flex justify-center items-center z-[1000px]">
         <p className="text-lg font-semibold">장바구니 담기</p>
-        {/* <p className="float-right">총 금액</p> */}
+        <p className="float-right">총 금액</p>
       </nav>
     </section>
   );
