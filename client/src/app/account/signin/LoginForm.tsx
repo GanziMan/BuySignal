@@ -71,12 +71,19 @@ export default function LoginForm() {
               className="block  w-full"
               type="password"
               {...register("password", {
-                required: "비밀번호는 필수 값입니다.",
+                required: "필수 값입니다.",
+                minLength: {
+                  value: 6,
+                  message: "비밀번호는 최소 6글자 이상이어야 합니다.",
+                },
               })}
               InputProps={{
                 sx: { width: "100%" },
               }}
             />
+            {errors.password && (
+              <p className="text-red-600 text-xs">{errors.password.message}</p>
+            )}
           </div>
         </div>
         <div className="flex flex-col justify-center items-center gap-7">
