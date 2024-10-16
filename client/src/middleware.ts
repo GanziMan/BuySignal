@@ -12,6 +12,9 @@ import { JWTExpired } from "jose/errors";
 export default async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
+  if (pathname === "/") {
+    return NextResponse.redirect(DOMAIN_URL + "/main");
+  }
   //토큰처리
   const accessToken = req.cookies.get("accessToken");
   const refreshToken = req.cookies.get("refreshToken");
