@@ -48,7 +48,9 @@ export default function SignUpForm() {
             label="이름"
             variant="standard"
             className="block w-full"
-            {...register("name")}
+            {...register("name", {
+              required: "필수 값입니다.",
+            })}
             InputProps={{
               sx: { width: "100%" },
             }}
@@ -80,11 +82,20 @@ export default function SignUpForm() {
             variant="standard"
             className="block  w-full"
             type="password"
-            {...register("password")}
+            {...register("password", {
+              required: "필수 값입니다.",
+              minLength: {
+                value: 6,
+                message: "비밀번호는 최소 6글자 이상이어야 합니다.",
+              },
+            })}
             InputProps={{
               sx: { width: "100%" },
             }}
           />
+          {errors.password && (
+            <p className="text-red-600 text-xs">{errors.password.message}</p>
+          )}
         </div>
 
         <button
