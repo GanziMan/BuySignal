@@ -51,7 +51,7 @@ export default function SuccessForm({
   }, []);
 
   return (
-    <div className="wrapper">
+    <div className="wrapper h-screen">
       {isConfirm ? (
         <div className="flex flex-col  align-center confirm-success w-full max-w-[540px] gap-10">
           <div className="flex flex-col items-center">
