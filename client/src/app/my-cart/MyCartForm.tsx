@@ -81,10 +81,10 @@ export default function MyCartForm() {
         </div>
         <button
           onClick={() => setDrawerOpen(true)}
-          className="bg-[#489E67] text-white max-w-[344px] w-full h-[57px] bottom-[117px] fixed  rounded-2xl flex justify-center items-center z-[1000px]"
+          className="bg-[#489E67] text-white max-w-[344px] w-full h-[57px] bottom-[117px] fixed  rounded-2xl flex gap-1 justify-center items-center z-[1000px]"
         >
           <p className="text-lg font-semibold">구매하기</p>
-          <p className="text-xs">({totalPrice}원)</p>
+          <p className="text-xs">(총 금액 {totalPrice}원)</p>
         </button>
       </section>
       <BottomDrawer
