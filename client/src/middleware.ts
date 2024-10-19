@@ -20,7 +20,11 @@ export default async function middleware(req: NextRequest) {
   const refreshToken = req.cookies.get("refreshToken");
 
   if (!accessToken?.value) {
-    if (pathname !== "/account/signin" && pathname !== "/account/signup") {
+    if (
+      pathname !== "/account/signin" &&
+      pathname !== "/account/signup" &&
+      pathname !== "/tosspayments/success"
+    ) {
       return NextResponse.redirect(DOMAIN_URL + "/account/signin");
     }
     return NextResponse.next();
@@ -63,10 +67,10 @@ export default async function middleware(req: NextRequest) {
 
         return res;
       } catch (error) {
-        return NextResponse.redirect(DOMAIN_URL + "/account/signin");
+        return NextResponse.redirect(DOMAIN_URL + "");
       }
     } else {
-      return NextResponse.redirect(DOMAIN_URL + "/account/signin");
+      return NextResponse.redirect(DOMAIN_URL + "");
     }
   }
 
