@@ -1,3 +1,4 @@
+"use server";
 // utils/payment.ts
 
 export async function PaymentConfirm({
@@ -27,6 +28,7 @@ export async function PaymentConfirm({
     );
 
     const responseBody = await response.json();
+
     return {
       status: response.status,
       body: responseBody,
