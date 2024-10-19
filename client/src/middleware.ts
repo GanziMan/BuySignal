@@ -23,7 +23,8 @@ export default async function middleware(req: NextRequest) {
     if (
       pathname !== "/account/signin" &&
       pathname !== "/account/signup" &&
-      pathname !== "/tosspayments/success"
+      pathname !== "/tosspayments/success" &&
+      pathname !== "/tosspayments/fail"
     ) {
       return NextResponse.redirect(DOMAIN_URL + "/account/signin");
     }
@@ -40,6 +41,7 @@ export default async function middleware(req: NextRequest) {
       return NextResponse.redirect(DOMAIN_URL + "/main");
     }
   } catch (error) {
+    console.log("왜 에러");
     if (error instanceof JWTExpired && refreshToken?.value != null) {
       try {
         const verified = await jwtVerify(
@@ -67,10 +69,10 @@ export default async function middleware(req: NextRequest) {
 
         return res;
       } catch (error) {
-        return NextResponse.redirect(DOMAIN_URL + "");
+        return NextResponse.redirect(DOMAIN_URL + "/account/signin");
       }
     } else {
-      return NextResponse.redirect(DOMAIN_URL + "");
+      return NextResponse.redirect(DOMAIN_URL + "/account/signin");
     }
   }
 
