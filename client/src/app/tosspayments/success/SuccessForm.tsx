@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { PaymentConfirm } from "../action";
+import { useRouter } from "next/navigation";
 
 export default function SuccessForm({
   orderId,
@@ -12,6 +13,8 @@ export default function SuccessForm({
   paymentKey: string;
 }) {
   const [isConfirm, setIsConfirm] = useState<boolean>(false);
+  const router = useRouter();
+
   useEffect(() => {
     // 쿼리 파라미터 값이 결제 요청할 때 보낸 데이터와 동일한지 반드시 확인하세요.
     // 클라이언트에서 결제 금액을 조작하는 행위를 방지할 수 있습니다.
@@ -103,20 +106,12 @@ export default function SuccessForm({
 
           <div className="button-group">
             <div className="flex gap-4">
-              <a
+              <p
                 className="py-[11px] px-[22px] text-center rounded-lg bg-[#f2f4f6] text-[#4e5968] text-base cursor-pointer w-full"
-                href="https://developers.tosspayments.com/sandbox"
+                onClick={() => router.push("/main")}
               >
-                다시 테스트하기
-              </a>
-              <a
-                className="py-[11px] px-[22px] text-center rounded-lg bg-[#f2f4f6] text-[#4e5968] text-base cursor-pointer w-full"
-                href="https://docs.tosspayments.com/guides/v2/payment-widget/integration"
-                target="_blank"
-                rel="noopner noreferer"
-              >
-                결제 연동 문서가기
-              </a>
+                확인
+              </p>
             </div>
           </div>
         </div>
