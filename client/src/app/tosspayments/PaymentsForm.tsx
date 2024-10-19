@@ -114,10 +114,11 @@ export default function PaymentsForm() {
                 // 결제를 요청하기 전에 orderId, amount를 서버에 저장하세요.
                 // 결제 과정에서 악의적으로 결제 금액이 바뀌는 것을 확인하는 용도입니다.
                 widgets?.requestPayment({
-                  orderId: `kn_BWEaFAqo7BQQvCRPK1${Date.now()}`,
+                  orderId: `sTOn0IDWWGJ_2KblBgLW4` + Date.now(),
                   orderName: "토스 티셔츠 외 2건",
                   successUrl: window.location.origin + "/tosspayments/success",
                   failUrl: window.location.origin + "/tosspayments/fail",
+                  pendingUrl: window.location.origin + "/main",
                   customerEmail: "customer123@gmail.com",
                   customerName: "김토스",
                   customerMobilePhone: "01012341234",
