@@ -12,3 +12,4 @@ client/package-lock.json
 /server/main_api_server/users/migrations/0002_accounts_delete_user.py
 /server/main_api_server/users/migrations/0003_rename_accounts_account.py
 /server/main_api_server/users/migrations/0004_rename_password_account_password_hash.py
+/server
