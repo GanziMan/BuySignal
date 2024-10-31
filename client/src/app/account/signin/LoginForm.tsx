@@ -21,8 +21,8 @@ export default function LoginForm() {
 
   return (
     <form
-      onSubmit={handleSubmit((data) => {
-        signIn(data).then((res) => {
+      onSubmit={handleSubmit(async (data) => {
+        await signIn(data).then((res) => {
           if (res.code === 200) {
             toast.success(res.message);
             router.push("/main");
