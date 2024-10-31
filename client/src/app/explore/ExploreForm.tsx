@@ -6,6 +6,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
+type CategoryType = "all" | "clothes" | "shoes" | string;
+
 const mockExploreData = [
   {},
   {},
@@ -49,9 +51,7 @@ function ExploreContent() {
   const searchParams = useSearchParams();
   const searchCategory = searchParams.get("category");
 
-  const [category, setCategory] = useState<
-    "all" | "clothes" | "shoes" | string
-  >("all");
+  const [category, setCategory] = useState<CategoryType>("all");
 
   useEffect(() => {
     if (searchCategory) setCategory(searchCategory!);
