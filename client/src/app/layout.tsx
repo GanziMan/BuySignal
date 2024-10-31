@@ -3,16 +3,10 @@ import "./globals.css";
 import { Theme as RadixTheme } from "@radix-ui/themes";
 import { RootToaster } from "@/Provider/RootToaster";
 import Head from "next/head";
-import { Fredoka } from "next/font/google";
-
-const fredoka = Fredoka({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "구매각",
-  description: "",
+  description: "사용자들이 원하는  상품을 진열해드리고 있습니다.",
 };
 
 export default function RootLayout({
@@ -28,7 +22,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </Head>
-      <body className={fredoka.className}>
+      <body>
         <RadixTheme>
           <RootToaster />
           {children}
