@@ -4,7 +4,7 @@
 
 # 🌐 Links
 
-> **Service** : https://buy-signal.vercel.app/introduce (작업중) <br>
+> **Service** : (작업중) <br>
 
 # ⚙️ How to Start
 
