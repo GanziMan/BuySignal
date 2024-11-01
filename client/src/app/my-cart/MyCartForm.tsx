@@ -13,25 +13,38 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const mockCartData = [
-  { name: "나이키 에어맥스 운동화", price: 5000 },
-  { name: "나이키 에어맥스 운동화", price: 5000 },
-  { name: "나이키 에어맥스 운동화", price: 5000 },
-  { name: "나이키 에어맥스 운동화", price: 5000 },
-  { name: "나이키 에어맥스 운동화", price: 5000 },
-  { name: "나이키 에어맥스 운동화", price: 5000 },
-  { name: "나이키 에어맥스 운동화", price: 5000 },
-  { name: "나이키 에어맥스 운동화", price: 5000 },
+interface CartDataType {
+  id: number;
+  name: string;
+  price: number;
+}
+const mockCartData: CartDataType[] = [
+  { id: 0, name: "나이키 에어맥스 운동화", price: 5000 },
+  { id: 1, name: "나이키 에어맥스 운동화", price: 5000 },
+  { id: 2, name: "나이키 에어맥스 운동화", price: 5000 },
+  { id: 3, name: "나이키 에어맥스 운동화", price: 5000 },
+  { id: 4, name: "나이키 에어맥스 운동화", price: 5000 },
+  { id: 5, name: "나이키 에어맥스 운동화", price: 5000 },
+  { id: 6, name: "나이키 에어맥스 운동화", price: 5000 },
+  { id: 6, name: "나이키 에어맥스 운동화", price: 5000 },
 ];
 export default function MyCartForm() {
   const router = useRouter();
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+  const [count, setCount] = useState<number>(1);
   const drawClose = () => {
     setDrawerOpen(false);
   };
 
   const totalPrice = mockCartData.reduce((acc, item) => acc + item.price, 0);
 
+  const onCountChange = (value: string) => {
+    if (value === "plus") {
+      setCount(count + 1);
+    } else if (value === "minus") {
+      setCount(count - 1);
+    }
+  };
   return (
     <>
       <section className="h-full w-full flex flex-col gap-6 py-2 items-center">
@@ -64,11 +77,21 @@ export default function MyCartForm() {
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center justify-between max-w-[120px] w-full">
-                        <PlusIcon width={20} height={20} />
+                        <PlusIcon
+                          className="cursor-pointer"
+                          width={20}
+                          height={20}
+                          onClick={() => onCountChange("plus")}
+                        />
                         <div className="flex justify-center border border-[#E2E2E2] items-center w-[45px] h-[45px] rounded-[17px] font-semibold text-lg">
-                          1
+                          {count}
                         </div>
-                        <MinusIcon width={20} height={20} />
+                        <MinusIcon
+                          className="cursor-pointer"
+                          width={20}
+                          height={20}
+                          onClick={() => onCountChange("minus")}
+                        />
                       </div>
 
                       <p className="font-semibold">{item.price}</p>
