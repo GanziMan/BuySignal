@@ -23,7 +23,7 @@ export default function SideBar({
   const list = () => (
     <Box
       role="presentation"
-      className="w-full max-w-[600px] p-4 relative h-screen "
+      className="w-full max-w-[600px]  p-4 relative !h-full"
     >
       <div className="flex gap-5 items-center justify-center">
         <Image
@@ -75,6 +75,11 @@ export default function SideBar({
           open={state}
           className=""
           onClose={toggleDrawer(false)}
+          sx={{
+            "& .MuiPaper-root": {
+              height: "100% !important",
+            },
+          }}
         >
           {list()}
         </Drawer>
