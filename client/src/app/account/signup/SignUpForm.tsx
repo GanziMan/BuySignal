@@ -1,24 +1,38 @@
 "use client";
 
 import { TextField } from "@mui/material";
-import Image from "next/image";
 import { useForm } from "react-hook-form";
 import signUp from "./actions/signUp";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import RadioGroup, { RadioGroupItem } from "@/components/RadioGroup";
 
 interface SignUpType {
   email: string;
   password: string;
   name: string;
+  gender: string;
 }
 export default function SignUpForm() {
   const router = useRouter();
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
-  } = useForm<SignUpType>();
+    setValue,
+  } = useForm<SignUpType>({
+    defaultValues: {
+      email: "",
+      password: "",
+      name: "",
+      gender: "M",
+    },
+  });
+
+  const handleRadioChange = (value: string) => {
+    setValue("gender", value);
+  };
 
   return (
     <form
@@ -35,13 +49,6 @@ export default function SignUpForm() {
       )}
       className="h-screen flex flex-col gap-[20px]"
     >
-      {/* <Image
-        src={"/images/account/img-header.png"}
-        alt=""
-        width={0}
-        height={233}
-        className="w-full"
-      /> */}
       <div className="flex flex-col gap-[64px]  px-10">
         <div className="flex flex-col gap-6">
           <TextField
@@ -97,6 +104,16 @@ export default function SignUpForm() {
           {errors.password && (
             <p className="text-red-600 text-xs">{errors.password.message}</p>
           )}
+
+          <RadioGroup
+            className="flex gap-5"
+            {...register("gender")}
+            value={getValues("gender")}
+            handleRadioChange={handleRadioChange}
+          >
+            <RadioGroupItem label="남" value="M" />
+            <RadioGroupItem label="여" value="W" />
+          </RadioGroup>
         </div>
 
         <button
