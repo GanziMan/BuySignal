@@ -53,8 +53,8 @@ export default function ThisWeekProduct({
                   <Image
                     src={"/images/icons/ic-plus.svg"}
                     alt="플러스 아이콘"
-                    width={15}
-                    height={15}
+                    width={14}
+                    height={14}
                     color="white"
                   />
                 </div>
